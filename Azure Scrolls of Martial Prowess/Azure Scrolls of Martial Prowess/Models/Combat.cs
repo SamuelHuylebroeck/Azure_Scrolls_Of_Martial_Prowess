@@ -8,22 +8,22 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
 {
     public class Combat
     {
-        public SortedList<int,Character> Participants { get; set; }
-
+        public List<Character> Participants { get; set; }
+       
         public Combat()
         {
-            this.Participants = new SortedList<int,Character>();
+            this.Participants = new List<Character>();
+
         }
 
         public Boolean AddCharacter(Character newParticipant)
         {
-            Boolean res = false;
             //Check if already present
-            if (Participants.ContainsValue(newParticipant)){
+            if (Participants.Contains(newParticipant)){
                 return false;
             }
 
-            Participants.Add(newParticipant.CurrentInitiative, newParticipant);
+            Participants.Add(newParticipant);
             return true;
         }
 
@@ -31,7 +31,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
         {
             //Assume no characters with the same name are present
             Character res = null;
-            foreach(Character charPres in Participants.Values)
+            foreach(Character charPres in Participants)
             {
                 if(charPres.Name == name)
                 {

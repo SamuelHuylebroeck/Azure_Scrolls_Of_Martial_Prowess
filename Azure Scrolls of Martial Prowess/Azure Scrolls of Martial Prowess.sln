@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure Scrolls of Martial Prowess", "Azure Scrolls of Martial Prowess\Azure Scrolls of Martial Prowess.csproj", "{B7762A77-B4F4-492F-B690-7F275BF29829}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureUnitTests", "AzureUnitTests\AzureUnitTests.csproj", "{01D560BC-04F6-4842-8FD9-71A9CAAE2AF5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B7762A77-B4F4-492F-B690-7F275BF29829} = {B7762A77-B4F4-492F-B690-7F275BF29829}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
