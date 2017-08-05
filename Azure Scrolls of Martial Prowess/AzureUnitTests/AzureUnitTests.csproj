@@ -53,6 +53,12 @@
     <Compile Include="Controllers\CombatTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Azure Scrolls of Martial Prowess\Azure Scrolls of Martial Prowess.csproj">
+      <Project>{b7762a77-b4f4-492f-b690-7f275bf29829}</Project>
+      <Name>Azure Scrolls of Martial Prowess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

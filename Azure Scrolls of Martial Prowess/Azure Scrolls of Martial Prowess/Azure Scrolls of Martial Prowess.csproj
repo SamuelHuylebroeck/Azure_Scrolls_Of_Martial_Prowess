@@ -63,6 +63,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddCharacter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddCharacter.Designer.cs">
+      <DependentUpon>AddCharacter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Views\AddCharacter.resx">
+      <DependentUpon>AddCharacter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </EmbeddedResource>

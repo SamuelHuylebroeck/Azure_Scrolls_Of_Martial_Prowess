@@ -16,7 +16,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainScreen());
         }
     }
 }

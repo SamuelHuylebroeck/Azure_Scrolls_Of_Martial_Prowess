@@ -8,7 +8,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
 {
     public class Character : CharacterTemplate
     {
-        public Character(string name,CharacterTemplate template) : base(template.Type, template.Willpower, template.PeripheralEssence, template.PersonalEssence, template.HealthLevels, template.Battlegroup, template.Might, template.Size, template.Drill)       
+        public Character(string name,CharacterTemplate template) : base(template.Type, template.Willpower, template.PeripheralEssence, template.PersonalEssence, template.HealthLevels, template.Battlegroup)       
         {
             this.Name = name;
             this.CurrentInitiative = 0;
@@ -16,10 +16,10 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
             this.CurrentPersonalEssence = this.PersonalEssence;
             this.CurrentWillPower = 0;
             this.CurrentEffects = new List<Effect>();
-            this.CurrentHealthLevels = new Dictionary<string, string>();
+            this.CurrentHealthLevels = new List<KeyValuePair <string, string>>();
             foreach(String level in HealthLevels)
             {
-                CurrentHealthLevels.Add(level, "O");
+                CurrentHealthLevels.Add(new KeyValuePair<String,String>(level, "O"));
             }
             this.HasActedThisRound = false;
         }
@@ -29,9 +29,24 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
         public int CurrentWillPower { get; set; }
         public int CurrentPersonalEssence { get; set; }
         public int CurrentPeripheralEssence { get; set; }
-        public Dictionary<String, String> CurrentHealthLevels { get; set; }
-        public List<Effect> CurrentEffects { get; set; }
+        List<KeyValuePair<string, string>> CurrentHealthLevels { get; set; }
+        public List<Effect> CurrentEffects { get; }
         public Boolean HasActedThisRound { get; set; }
+
+
+        public Effect GetEffectByName(String name)
+        {
+            Effect res = null;
+            foreach(Effect e in CurrentEffects)
+            {
+                if (e.name.Equals(name))
+                {
+                    res = e;
+                    break;
+                }
+            }
+            return res;
+        }
 
     }
 }

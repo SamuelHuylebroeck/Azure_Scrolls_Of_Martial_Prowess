@@ -37,39 +37,39 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CharacterFocus = new System.Windows.Forms.GroupBox();
+            this.HealthLevels = new System.Windows.Forms.GroupBox();
+            this.HealthLevelTable = new System.Windows.Forms.TableLayoutPanel();
             this.Effects = new System.Windows.Forms.GroupBox();
+            this.EffectsTablePanel = new System.Windows.Forms.Panel();
+            this.EffectsTable = new System.Windows.Forms.TableLayoutPanel();
             this.Button_AddEffect = new System.Windows.Forms.Button();
-            this.Label_Anima = new System.Windows.Forms.Label();
-            this.Label_Willpower = new System.Windows.Forms.Label();
-            this.Label_PeripheralEssence = new System.Windows.Forms.Label();
             this.Label_PersonalEssence = new System.Windows.Forms.Label();
-            this.Anima = new System.Windows.Forms.NumericUpDown();
+            this.Label_PeripheralEssence = new System.Windows.Forms.Label();
+            this.Label_Willpower = new System.Windows.Forms.Label();
+            this.Label_Anima = new System.Windows.Forms.Label();
+            this.PersonalEssence = new System.Windows.Forms.NumericUpDown();
             this.PeripheralEssence = new System.Windows.Forms.NumericUpDown();
             this.Willpower = new System.Windows.Forms.NumericUpDown();
-            this.PersonalEssence = new System.Windows.Forms.NumericUpDown();
+            this.Anima = new System.Windows.Forms.NumericUpDown();
             this.Label_Initiative = new System.Windows.Forms.Label();
             this.Initiative = new System.Windows.Forms.NumericUpDown();
             this.Name = new System.Windows.Forms.TextBox();
             this.Type = new System.Windows.Forms.TextBox();
             this.Portrait = new System.Windows.Forms.PictureBox();
-            this.HealthLevels = new System.Windows.Forms.GroupBox();
             this.Button_NextRound = new System.Windows.Forms.Button();
             this.Button_AddCharacter = new System.Windows.Forms.Button();
-            this.HealthLevelTable = new System.Windows.Forms.TableLayoutPanel();
-            this.EffectsTable = new System.Windows.Forms.TableLayoutPanel();
-            this.EffectsTablePanel = new System.Windows.Forms.Panel();
             this.CombatScreen.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.CharacterFocus.SuspendLayout();
+            this.HealthLevels.SuspendLayout();
             this.Effects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Anima)).BeginInit();
+            this.EffectsTablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PersonalEssence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PeripheralEssence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Willpower)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PersonalEssence)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Anima)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Initiative)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).BeginInit();
-            this.HealthLevels.SuspendLayout();
-            this.EffectsTablePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // CombatScreen
@@ -82,7 +82,6 @@
             this.CombatScreen.TabIndex = 0;
             this.CombatScreen.TabStop = false;
             this.CombatScreen.Text = "CombatScreen";
-            //this.CombatScreen.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // Combat_Table
             // 
@@ -91,11 +90,11 @@
             this.Combat_Table.ColumnCount = 3;
             this.Combat_Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.Combat_Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.Combat_Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.Combat_Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.Combat_Table.Location = new System.Drawing.Point(6, 20);
             this.Combat_Table.Name = "Combat_Table";
             this.Combat_Table.RowCount = 1;
-            this.Combat_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.Combat_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.Combat_Table.Size = new System.Drawing.Size(351, 46);
             this.Combat_Table.TabIndex = 0;
             // 
@@ -168,6 +167,30 @@
             this.CharacterFocus.TabStop = false;
             this.CharacterFocus.Text = "Focus";
             // 
+            // HealthLevels
+            // 
+            this.HealthLevels.Controls.Add(this.HealthLevelTable);
+            this.HealthLevels.Location = new System.Drawing.Point(6, 246);
+            this.HealthLevels.Name = "HealthLevels";
+            this.HealthLevels.Size = new System.Drawing.Size(299, 69);
+            this.HealthLevels.TabIndex = 14;
+            this.HealthLevels.TabStop = false;
+            this.HealthLevels.Text = "Health Levels";
+            // 
+            // HealthLevelTable
+            // 
+            this.HealthLevelTable.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.HealthLevelTable.ColumnCount = 2;
+            this.HealthLevelTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.HealthLevelTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.HealthLevelTable.Location = new System.Drawing.Point(10, 19);
+            this.HealthLevelTable.Name = "HealthLevelTable";
+            this.HealthLevelTable.RowCount = 2;
+            this.HealthLevelTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.HealthLevelTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.HealthLevelTable.Size = new System.Drawing.Size(283, 44);
+            this.HealthLevelTable.TabIndex = 0;
+            // 
             // Effects
             // 
             this.Effects.Controls.Add(this.EffectsTablePanel);
@@ -179,6 +202,28 @@
             this.Effects.TabStop = false;
             this.Effects.Text = "Effects";
             // 
+            // EffectsTablePanel
+            // 
+            this.EffectsTablePanel.Controls.Add(this.EffectsTable);
+            this.EffectsTablePanel.Location = new System.Drawing.Point(6, 19);
+            this.EffectsTablePanel.Name = "EffectsTablePanel";
+            this.EffectsTablePanel.Size = new System.Drawing.Size(287, 126);
+            this.EffectsTablePanel.TabIndex = 0;
+            // 
+            // EffectsTable
+            // 
+            this.EffectsTable.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EffectsTable.ColumnCount = 2;
+            this.EffectsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.EffectsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.EffectsTable.Location = new System.Drawing.Point(7, 13);
+            this.EffectsTable.Name = "EffectsTable";
+            this.EffectsTable.RowCount = 2;
+            this.EffectsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.61905F));
+            this.EffectsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.38095F));
+            this.EffectsTable.Size = new System.Drawing.Size(268, 31);
+            this.EffectsTable.TabIndex = 0;
+            // 
             // Button_AddEffect
             // 
             this.Button_AddEffect.Location = new System.Drawing.Point(218, 165);
@@ -187,33 +232,6 @@
             this.Button_AddEffect.TabIndex = 15;
             this.Button_AddEffect.Text = "AddEffect";
             this.Button_AddEffect.UseVisualStyleBackColor = true;
-            // 
-            // Label_Anima
-            // 
-            this.Label_Anima.AutoSize = true;
-            this.Label_Anima.Location = new System.Drawing.Point(187, 221);
-            this.Label_Anima.Name = "Label_Anima";
-            this.Label_Anima.Size = new System.Drawing.Size(36, 13);
-            this.Label_Anima.TabIndex = 13;
-            this.Label_Anima.Text = "Anima";
-            // 
-            // Label_Willpower
-            // 
-            this.Label_Willpower.AutoSize = true;
-            this.Label_Willpower.Location = new System.Drawing.Point(187, 195);
-            this.Label_Willpower.Name = "Label_Willpower";
-            this.Label_Willpower.Size = new System.Drawing.Size(53, 13);
-            this.Label_Willpower.TabIndex = 12;
-            this.Label_Willpower.Text = "Willpower";
-            // 
-            // Label_PeripheralEssence
-            // 
-            this.Label_PeripheralEssence.AutoSize = true;
-            this.Label_PeripheralEssence.Location = new System.Drawing.Point(16, 221);
-            this.Label_PeripheralEssence.Name = "Label_PeripheralEssence";
-            this.Label_PeripheralEssence.Size = new System.Drawing.Size(98, 13);
-            this.Label_PeripheralEssence.TabIndex = 11;
-            this.Label_PeripheralEssence.Text = "Peripheral Essence";
             // 
             // Label_PersonalEssence
             // 
@@ -224,12 +242,39 @@
             this.Label_PersonalEssence.TabIndex = 10;
             this.Label_PersonalEssence.Text = "Personal Essence";
             // 
-            // Anima
+            // Label_PeripheralEssence
             // 
-            this.Anima.Location = new System.Drawing.Point(250, 219);
-            this.Anima.Name = "Anima";
-            this.Anima.Size = new System.Drawing.Size(37, 20);
-            this.Anima.TabIndex = 9;
+            this.Label_PeripheralEssence.AutoSize = true;
+            this.Label_PeripheralEssence.Location = new System.Drawing.Point(16, 221);
+            this.Label_PeripheralEssence.Name = "Label_PeripheralEssence";
+            this.Label_PeripheralEssence.Size = new System.Drawing.Size(98, 13);
+            this.Label_PeripheralEssence.TabIndex = 11;
+            this.Label_PeripheralEssence.Text = "Peripheral Essence";
+            // 
+            // Label_Willpower
+            // 
+            this.Label_Willpower.AutoSize = true;
+            this.Label_Willpower.Location = new System.Drawing.Point(187, 195);
+            this.Label_Willpower.Name = "Label_Willpower";
+            this.Label_Willpower.Size = new System.Drawing.Size(53, 13);
+            this.Label_Willpower.TabIndex = 12;
+            this.Label_Willpower.Text = "Willpower";
+            // 
+            // Label_Anima
+            // 
+            this.Label_Anima.AutoSize = true;
+            this.Label_Anima.Location = new System.Drawing.Point(187, 221);
+            this.Label_Anima.Name = "Label_Anima";
+            this.Label_Anima.Size = new System.Drawing.Size(36, 13);
+            this.Label_Anima.TabIndex = 13;
+            this.Label_Anima.Text = "Anima";
+            // 
+            // PersonalEssence
+            // 
+            this.PersonalEssence.Location = new System.Drawing.Point(111, 193);
+            this.PersonalEssence.Name = "PersonalEssence";
+            this.PersonalEssence.Size = new System.Drawing.Size(70, 20);
+            this.PersonalEssence.TabIndex = 6;
             // 
             // PeripheralEssence
             // 
@@ -245,12 +290,12 @@
             this.Willpower.Size = new System.Drawing.Size(37, 20);
             this.Willpower.TabIndex = 7;
             // 
-            // PersonalEssence
+            // Anima
             // 
-            this.PersonalEssence.Location = new System.Drawing.Point(111, 193);
-            this.PersonalEssence.Name = "PersonalEssence";
-            this.PersonalEssence.Size = new System.Drawing.Size(70, 20);
-            this.PersonalEssence.TabIndex = 6;
+            this.Anima.Location = new System.Drawing.Point(250, 219);
+            this.Anima.Name = "Anima";
+            this.Anima.Size = new System.Drawing.Size(37, 20);
+            this.Anima.TabIndex = 9;
             // 
             // Label_Initiative
             // 
@@ -291,24 +336,15 @@
             this.Portrait.TabIndex = 0;
             this.Portrait.TabStop = false;
             // 
-            // HealthLevels
-            // 
-            this.HealthLevels.Controls.Add(this.HealthLevelTable);
-            this.HealthLevels.Location = new System.Drawing.Point(6, 246);
-            this.HealthLevels.Name = "HealthLevels";
-            this.HealthLevels.Size = new System.Drawing.Size(299, 69);
-            this.HealthLevels.TabIndex = 14;
-            this.HealthLevels.TabStop = false;
-            this.HealthLevels.Text = "Health Levels";
-            // 
             // Button_NextRound
             // 
             this.Button_NextRound.Location = new System.Drawing.Point(16, 502);
             this.Button_NextRound.Name = "Button_NextRound";
             this.Button_NextRound.Size = new System.Drawing.Size(75, 23);
             this.Button_NextRound.TabIndex = 3;
-            this.Button_NextRound.Text = "button1";
+            this.Button_NextRound.Text = "Next Round";
             this.Button_NextRound.UseVisualStyleBackColor = true;
+            this.Button_NextRound.Click += new System.EventHandler(this.Button_NextRound_Click);
             // 
             // Button_AddCharacter
             // 
@@ -318,42 +354,7 @@
             this.Button_AddCharacter.TabIndex = 4;
             this.Button_AddCharacter.Text = "+";
             this.Button_AddCharacter.UseVisualStyleBackColor = true;
-            // 
-            // HealthLevelTable
-            // 
-            this.HealthLevelTable.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.HealthLevelTable.ColumnCount = 2;
-            this.HealthLevelTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HealthLevelTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HealthLevelTable.Location = new System.Drawing.Point(10, 19);
-            this.HealthLevelTable.Name = "HealthLevelTable";
-            this.HealthLevelTable.RowCount = 2;
-            this.HealthLevelTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HealthLevelTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HealthLevelTable.Size = new System.Drawing.Size(283, 44);
-            this.HealthLevelTable.TabIndex = 0;
-            // 
-            // EffectsTable
-            // 
-            this.EffectsTable.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EffectsTable.ColumnCount = 2;
-            this.EffectsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.EffectsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.EffectsTable.Location = new System.Drawing.Point(7, 13);
-            this.EffectsTable.Name = "EffectsTable";
-            this.EffectsTable.RowCount = 2;
-            this.EffectsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.61905F));
-            this.EffectsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.38095F));
-            this.EffectsTable.Size = new System.Drawing.Size(268, 31);
-            this.EffectsTable.TabIndex = 0;
-            // 
-            // EffectsTablePanel
-            // 
-            this.EffectsTablePanel.Controls.Add(this.EffectsTable);
-            this.EffectsTablePanel.Location = new System.Drawing.Point(6, 19);
-            this.EffectsTablePanel.Name = "EffectsTablePanel";
-            this.EffectsTablePanel.Size = new System.Drawing.Size(287, 126);
-            this.EffectsTablePanel.TabIndex = 0;
+            this.Button_AddCharacter.Click += new System.EventHandler(this.Button_AddCharacter_Click);
             // 
             // MainScreen
             // 
@@ -366,21 +367,22 @@
             this.Controls.Add(this.CombatScreen);
             this.Controls.Add(this.MainMenu);
             this.MainMenuStrip = this.MainMenu;
+            //this.Name = "MainScreen";
             this.Text = "MainScreen";
             this.CombatScreen.ResumeLayout(false);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.CharacterFocus.ResumeLayout(false);
             this.CharacterFocus.PerformLayout();
+            this.HealthLevels.ResumeLayout(false);
             this.Effects.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Anima)).EndInit();
+            this.EffectsTablePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PersonalEssence)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PeripheralEssence)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Willpower)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PersonalEssence)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Anima)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Initiative)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).EndInit();
-            this.HealthLevels.ResumeLayout(false);
-            this.EffectsTablePanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
