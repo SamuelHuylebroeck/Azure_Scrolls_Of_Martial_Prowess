@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Azure_Scrolls_of_Martial_Prowess.Models;
 
 namespace Azure_Scrolls_of_Martial_Prowess.Controllers
@@ -16,7 +17,6 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
         {
             this.currentCombat = new Combat();
         }
-
 
         public Boolean AddCharacter(Character newParticipant)
         {
@@ -34,6 +34,14 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             //Update initiative
             UpdateInitiative();
             //Remove dead characters
+        }
+
+        public void ResetActed()
+        {
+            foreach(Character particpant in currentCombat.Participants)
+            {
+                particpant.HasActedThisRound = false;
+            }
         }
 
         private void UpdateContinuousEffects()
@@ -114,7 +122,6 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             foreach (Character charPres in currentCombat.Participants)
             {
                 initiativeList.Add(charPres.CurrentInitiative, charPres.Name);
-                
             }
 
 
@@ -125,11 +132,34 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
         {
             int IComparer<int>.Compare(int x, int y)
             {
-                if (x == y) return 0;
+                if (x == y) return -1;
                 if (x < y) return 1;
                 if (x > y) return -1;
                 return 0;
 
+            }
+        }
+
+        public void handle_init_list_update(object sender, System.EventArgs e)
+        {
+            //only init or has acted can be updated here
+            int rowIndex = ((DataGridViewCellEventArgs)e).RowIndex;
+            DataGridViewRow row = ((DataGridView)sender).Rows[rowIndex];
+
+            //Retrieve data from event
+            String name =(String) row.Cells[1].Value;
+            int rowInit = Int32.Parse((string) row.Cells[0].Value);
+            bool rowHasActed = (Boolean) row.Cells[3].Value;
+            Character toUpdate = currentCombat.GetCharacter(name);
+            //Update init
+            if(rowInit != toUpdate.CurrentInitiative)
+            {
+                toUpdate.CurrentInitiative = rowInit;
+            }
+            //Update hasActed
+            if(rowHasActed != toUpdate.HasActedThisRound)
+            {
+                toUpdate.HasActedThisRound = rowHasActed;
             }
         }
     }

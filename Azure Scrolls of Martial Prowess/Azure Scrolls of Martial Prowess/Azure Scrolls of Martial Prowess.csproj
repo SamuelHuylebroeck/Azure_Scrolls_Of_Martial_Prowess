@@ -57,12 +57,6 @@
     <Compile Include="Configuration\Constants.cs" />
     <Compile Include="Models\Combat.cs" />
     <Compile Include="Models\Effect.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\AddCharacter.cs">
       <SubType>Form</SubType>
     </Compile>

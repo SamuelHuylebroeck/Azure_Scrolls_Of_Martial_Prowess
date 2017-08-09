@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CombatScreen = new System.Windows.Forms.GroupBox();
-            this.Combat_Table = new System.Windows.Forms.TableLayoutPanel();
+            this.CombatTablePanel = new System.Windows.Forms.Panel();
+            this.dataGridView_CombatTable = new System.Windows.Forms.DataGridView();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +61,13 @@
             this.Portrait = new System.Windows.Forms.PictureBox();
             this.Button_NextRound = new System.Windows.Forms.Button();
             this.Button_AddCharacter = new System.Windows.Forms.Button();
+            this.InitiativeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CombatScreen.SuspendLayout();
+            this.CombatTablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).BeginInit();
             this.MainMenu.SuspendLayout();
             this.CharacterFocus.SuspendLayout();
             this.HealthLevels.SuspendLayout();
@@ -75,28 +84,60 @@
             // CombatScreen
             // 
             this.CombatScreen.AutoSize = true;
-            this.CombatScreen.Controls.Add(this.Combat_Table);
+            this.CombatScreen.Controls.Add(this.CombatTablePanel);
             this.CombatScreen.Location = new System.Drawing.Point(10, 25);
             this.CombatScreen.Name = "CombatScreen";
-            this.CombatScreen.Size = new System.Drawing.Size(366, 457);
+            this.CombatScreen.Size = new System.Drawing.Size(372, 457);
             this.CombatScreen.TabIndex = 0;
             this.CombatScreen.TabStop = false;
             this.CombatScreen.Text = "CombatScreen";
             // 
-            // Combat_Table
+            // CombatTablePanel
             // 
-            this.Combat_Table.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Combat_Table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.Combat_Table.ColumnCount = 3;
-            this.Combat_Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.Combat_Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.Combat_Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.Combat_Table.Location = new System.Drawing.Point(6, 20);
-            this.Combat_Table.Name = "Combat_Table";
-            this.Combat_Table.RowCount = 1;
-            this.Combat_Table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.Combat_Table.Size = new System.Drawing.Size(351, 46);
-            this.Combat_Table.TabIndex = 0;
+            this.CombatTablePanel.AutoScroll = true;
+            this.CombatTablePanel.Controls.Add(this.dataGridView_CombatTable);
+            this.CombatTablePanel.Location = new System.Drawing.Point(2, 19);
+            this.CombatTablePanel.Name = "CombatTablePanel";
+            this.CombatTablePanel.Size = new System.Drawing.Size(364, 418);
+            this.CombatTablePanel.TabIndex = 1;
+            // 
+            // dataGridView_CombatTable
+            // 
+            this.dataGridView_CombatTable.AllowUserToResizeColumns = false;
+            this.dataGridView_CombatTable.AllowUserToResizeRows = false;
+            this.dataGridView_CombatTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView_CombatTable.ColumnHeadersHeight = 25;
+            this.dataGridView_CombatTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView_CombatTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.InitiativeColumn,
+            this.ParticipantName,
+            this.ParticipantDetails,
+            this.HasActedColumn});
+            this.dataGridView_CombatTable.Location = new System.Drawing.Point(4, 3);
+            this.dataGridView_CombatTable.Name = "dataGridView_CombatTable";
+            this.dataGridView_CombatTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView_CombatTable.RowHeadersVisible = false;
+            this.dataGridView_CombatTable.RowHeadersWidth = 40;
+            this.dataGridView_CombatTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView_CombatTable.RowTemplate.Height = 25;
+            this.dataGridView_CombatTable.Size = new System.Drawing.Size(357, 412);
+            this.dataGridView_CombatTable.TabIndex = 1;
             // 
             // MainMenu
             // 
@@ -356,6 +397,29 @@
             this.Button_AddCharacter.UseVisualStyleBackColor = true;
             this.Button_AddCharacter.Click += new System.EventHandler(this.Button_AddCharacter_Click);
             // 
+            // InitiativeColumn
+            // 
+            this.InitiativeColumn.HeaderText = "Initiative";
+            this.InitiativeColumn.Name = "InitiativeColumn";
+            this.InitiativeColumn.Width = 50;
+            // 
+            // ParticipantName
+            // 
+            this.ParticipantName.HeaderText = "Name";
+            this.ParticipantName.Name = "ParticipantName";
+            // 
+            // ParticipantDetails
+            // 
+            this.ParticipantDetails.HeaderText = "Details";
+            this.ParticipantDetails.Name = "ParticipantDetails";
+            this.ParticipantDetails.Width = 150;
+            // 
+            // HasActedColumn
+            // 
+            this.HasActedColumn.HeaderText = "Acted?";
+            this.HasActedColumn.Name = "HasActedColumn";
+            this.HasActedColumn.Width = 50;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,9 +431,10 @@
             this.Controls.Add(this.CombatScreen);
             this.Controls.Add(this.MainMenu);
             this.MainMenuStrip = this.MainMenu;
-            //this.Name = "MainScreen";
             this.Text = "MainScreen";
             this.CombatScreen.ResumeLayout(false);
+            this.CombatTablePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).EndInit();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.CharacterFocus.ResumeLayout(false);
@@ -407,7 +472,6 @@
         private System.Windows.Forms.NumericUpDown PeripheralEssence;
         private System.Windows.Forms.NumericUpDown Willpower;
         private System.Windows.Forms.NumericUpDown PersonalEssence;
-        private System.Windows.Forms.TableLayoutPanel Combat_Table;
         private System.Windows.Forms.GroupBox Effects;
         private System.Windows.Forms.Button Button_AddEffect;
         private System.Windows.Forms.Label Label_Anima;
@@ -420,5 +484,11 @@
         private System.Windows.Forms.TableLayoutPanel EffectsTable;
         private System.Windows.Forms.TableLayoutPanel HealthLevelTable;
         private System.Windows.Forms.Panel EffectsTablePanel;
+        private System.Windows.Forms.Panel CombatTablePanel;
+        private System.Windows.Forms.DataGridView dataGridView_CombatTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantDetails;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn HasActedColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InitiativeColumn;
     }
 }

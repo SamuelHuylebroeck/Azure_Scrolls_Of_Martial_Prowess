@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Azure_Scrolls_of_Martial_Prowess.Controllers;
 using Azure_Scrolls_of_Martial_Prowess.Views;
+using Azure_Scrolls_of_Martial_Prowess.Models;
 
 namespace Azure_Scrolls_of_Martial_Prowess
 {
@@ -20,11 +21,14 @@ namespace Azure_Scrolls_of_Martial_Prowess
         {
             InitializeComponent();
             combatController = new CombatController();
+            
         }
 
         private void Button_NextRound_Click(object sender, EventArgs e)
         {
             combatController.NextRound();
+            dataGridView_CombatTable.Rows.Clear();
+            UpdateCombatTable();
         }
 
         private void Button_AddCharacter_Click(object sender, EventArgs e)
@@ -34,11 +38,16 @@ namespace Azure_Scrolls_of_Martial_Prowess
         }
 
 
-        private void Update_Combat_Table()
+        public void UpdateCombatTable()
         {
-
-
+            
+            foreach (KeyValuePair<int,String> participant in combatController.initiativeList) {
+                Object[] values = { participant.Key, participant.Value, "insert description here", false };
+                dataGridView_CombatTable.Rows.Add(values);
+                dataGridView_CombatTable.CellEndEdit += new DataGridViewCellEventHandler(combatController.handle_init_list_update);
+            }
         }
+
     }
 
 }
