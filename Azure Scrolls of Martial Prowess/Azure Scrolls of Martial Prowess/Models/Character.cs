@@ -29,7 +29,8 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
         public int CurrentWillPower { get; set; }
         public int CurrentPersonalEssence { get; set; }
         public int CurrentPeripheralEssence { get; set; }
-        List<KeyValuePair<string, string>> CurrentHealthLevels { get; set; }
+        public String CurrentAnimaLevel { get; set; }
+        public List<KeyValuePair<string, string>> CurrentHealthLevels { get; set; }
         public List<Effect> CurrentEffects { get; }
         public Boolean HasActedThisRound { get; set; }
 

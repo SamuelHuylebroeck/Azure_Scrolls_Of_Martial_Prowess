@@ -12,16 +12,23 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
     {
         public Combat currentCombat { get; set; }
         public SortedList<int, String> initiativeList { get; set; }
+        public Character currentFocus { get; set; }
 
         public CombatController()
         {
             this.currentCombat = new Combat();
+            this.initiativeList = new SortedList<int, string>(new DescendingOrderComperator());
+            this.currentFocus = null;
         }
 
         public Boolean AddCharacter(Character newParticipant)
         {
             Boolean res = false;
             res = currentCombat.AddCharacter(newParticipant);
+            if (res)
+            {
+                initiativeList.Add(newParticipant.CurrentInitiative, newParticipant.Name);
+            }
             return res;
         }
 
@@ -38,7 +45,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
 
         public void ResetActed()
         {
-            foreach(Character particpant in currentCombat.Participants)
+            foreach (Character particpant in currentCombat.Participants)
             {
                 particpant.HasActedThisRound = false;
             }
@@ -74,7 +81,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
 
                 }
                 //Splits needed
-                if(missingInPeripheral<motesLeft )
+                if (missingInPeripheral < motesLeft)
                 {
                     charPres.CurrentPeripheralEssence += missingInPeripheral;
                     motesLeft -= missingInPeripheral;
@@ -116,15 +123,28 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
 
         private void UpdateInitiative()
         {
-            initiativeList = new SortedList<int, string>(new DescendingOrderComperator());
-            
-            
+            initiativeList.Clear();
+
             foreach (Character charPres in currentCombat.Participants)
             {
                 initiativeList.Add(charPres.CurrentInitiative, charPres.Name);
             }
 
 
+        }
+
+        private void UpdateInitiative(Character toUpdate)
+        {
+            int position = initiativeList.IndexOfValue(toUpdate.Name);
+            if (position > 0)
+            {
+                initiativeList.RemoveAt(position);
+                initiativeList.Add(toUpdate.CurrentInitiative, toUpdate.Name);
+            }
+            
+            
+
+            
         }
 
         //Quick descending order comperator
@@ -147,19 +167,54 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             DataGridViewRow row = ((DataGridView)sender).Rows[rowIndex];
 
             //Retrieve data from event
-            String name =(String) row.Cells[1].Value;
-            int rowInit = Int32.Parse((string) row.Cells[0].Value);
-            bool rowHasActed = (Boolean) row.Cells[3].Value;
-            Character toUpdate = currentCombat.GetCharacter(name);
-            //Update init
-            if(rowInit != toUpdate.CurrentInitiative)
+            String name = (String)row.Cells[1].Value;
+            Boolean needToParse = !(row.Cells[0].Value is int);
+            int rowInit = 0;
+            if (!needToParse) rowInit = (int) row.Cells[0].Value;
+            Boolean parseSuccesful = needToParse ? int.TryParse((string) row.Cells[0].Value, out rowInit):true;
+            if (parseSuccesful && row.Cells[3].Value != null)
             {
-                toUpdate.CurrentInitiative = rowInit;
+                bool rowHasActed = (Boolean)row.Cells[3].Value;
+                Character toUpdate = currentCombat.GetCharacter(name);
+                //Update init
+                if (rowInit != toUpdate.CurrentInitiative)
+                {
+                    toUpdate.CurrentInitiative = rowInit;
+                    UpdateInitiative();
+                }
+                //Update hasActed
+                if (rowHasActed != toUpdate.HasActedThisRound)
+                {
+                    toUpdate.HasActedThisRound = rowHasActed;
+                }
+
             }
-            //Update hasActed
-            if(rowHasActed != toUpdate.HasActedThisRound)
+            
+        }
+
+        public void UpdateFocusCharacter(Constants.Characteristic code, object newValue)
+        {
+            switch (code)
             {
-                toUpdate.HasActedThisRound = rowHasActed;
+                case Constants.Characteristic.INIT:
+                    int newInit = (int)newValue;
+                    currentFocus.CurrentInitiative = newInit;
+                    UpdateInitiative(currentFocus);
+                    break;
+                case Constants.Characteristic.PSE:
+                    int newPersonalEssence = (int)newValue;
+                    currentFocus.CurrentPersonalEssence = newPersonalEssence;
+                    break;
+                case Constants.Characteristic.PRE:
+                    int newPeripheralEssence = (int)newValue;
+                    currentFocus.CurrentPeripheralEssence = newPeripheralEssence;
+                    break;
+                case Constants.Characteristic.WP:
+                    int newWillpower = (int)newValue;
+                    currentFocus.CurrentWillPower = newWillpower;
+                    break;
+                default:
+                    break;
             }
         }
     }

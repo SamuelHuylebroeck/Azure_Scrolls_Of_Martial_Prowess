@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CombatScreen = new System.Windows.Forms.GroupBox();
             this.CombatTablePanel = new System.Windows.Forms.Panel();
             this.dataGridView_CombatTable = new System.Windows.Forms.DataGridView();
+            this.InitiativeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,31 +44,28 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CharacterFocus = new System.Windows.Forms.GroupBox();
+            this.comboBox_Focus_Anima = new System.Windows.Forms.ComboBox();
+            this.Button_Refresh_Character = new System.Windows.Forms.Button();
             this.HealthLevels = new System.Windows.Forms.GroupBox();
-            this.HealthLevelTable = new System.Windows.Forms.TableLayoutPanel();
+            this.Table_HealthLevels = new System.Windows.Forms.TableLayoutPanel();
             this.Effects = new System.Windows.Forms.GroupBox();
             this.EffectsTablePanel = new System.Windows.Forms.Panel();
-            this.EffectsTable = new System.Windows.Forms.TableLayoutPanel();
             this.Button_AddEffect = new System.Windows.Forms.Button();
             this.Label_PersonalEssence = new System.Windows.Forms.Label();
             this.Label_PeripheralEssence = new System.Windows.Forms.Label();
             this.Label_Willpower = new System.Windows.Forms.Label();
             this.Label_Anima = new System.Windows.Forms.Label();
-            this.PersonalEssence = new System.Windows.Forms.NumericUpDown();
-            this.PeripheralEssence = new System.Windows.Forms.NumericUpDown();
-            this.Willpower = new System.Windows.Forms.NumericUpDown();
-            this.Anima = new System.Windows.Forms.NumericUpDown();
+            this.upDown_Focus_PersonalEssence = new System.Windows.Forms.NumericUpDown();
+            this.upDown_Focus_PeripheralEssence = new System.Windows.Forms.NumericUpDown();
+            this.upDown_Focus_Willpower = new System.Windows.Forms.NumericUpDown();
             this.Label_Initiative = new System.Windows.Forms.Label();
-            this.Initiative = new System.Windows.Forms.NumericUpDown();
-            this.Name = new System.Windows.Forms.TextBox();
+            this.upDown_Focus_Initiative = new System.Windows.Forms.NumericUpDown();
+            this.textBox_name = new System.Windows.Forms.TextBox();
             this.Type = new System.Windows.Forms.TextBox();
             this.Portrait = new System.Windows.Forms.PictureBox();
             this.Button_NextRound = new System.Windows.Forms.Button();
             this.Button_AddCharacter = new System.Windows.Forms.Button();
-            this.InitiativeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Button_Refresh = new System.Windows.Forms.Button();
             this.CombatScreen.SuspendLayout();
             this.CombatTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).BeginInit();
@@ -72,12 +73,10 @@
             this.CharacterFocus.SuspendLayout();
             this.HealthLevels.SuspendLayout();
             this.Effects.SuspendLayout();
-            this.EffectsTablePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PersonalEssence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PeripheralEssence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Willpower)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Anima)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Initiative)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_PersonalEssence)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_PeripheralEssence)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_Willpower)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_Initiative)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,14 +105,14 @@
             this.dataGridView_CombatTable.AllowUserToResizeColumns = false;
             this.dataGridView_CombatTable.AllowUserToResizeRows = false;
             this.dataGridView_CombatTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView_CombatTable.ColumnHeadersHeight = 25;
             this.dataGridView_CombatTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView_CombatTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -124,20 +123,43 @@
             this.dataGridView_CombatTable.Location = new System.Drawing.Point(4, 3);
             this.dataGridView_CombatTable.Name = "dataGridView_CombatTable";
             this.dataGridView_CombatTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_CombatTable.RowHeadersVisible = false;
             this.dataGridView_CombatTable.RowHeadersWidth = 40;
             this.dataGridView_CombatTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_CombatTable.RowTemplate.Height = 25;
             this.dataGridView_CombatTable.Size = new System.Drawing.Size(357, 412);
             this.dataGridView_CombatTable.TabIndex = 1;
+            // 
+            // InitiativeColumn
+            // 
+            this.InitiativeColumn.HeaderText = "Initiative";
+            this.InitiativeColumn.Name = "InitiativeColumn";
+            this.InitiativeColumn.Width = 50;
+            // 
+            // ParticipantName
+            // 
+            this.ParticipantName.HeaderText = "Name";
+            this.ParticipantName.Name = "ParticipantName";
+            // 
+            // ParticipantDetails
+            // 
+            this.ParticipantDetails.HeaderText = "Details";
+            this.ParticipantDetails.Name = "ParticipantDetails";
+            this.ParticipantDetails.Width = 150;
+            // 
+            // HasActedColumn
+            // 
+            this.HasActedColumn.HeaderText = "Acted?";
+            this.HasActedColumn.Name = "HasActedColumn";
+            this.HasActedColumn.Width = 50;
             // 
             // MainMenu
             // 
@@ -186,19 +208,20 @@
             // 
             // CharacterFocus
             // 
+            this.CharacterFocus.Controls.Add(this.comboBox_Focus_Anima);
+            this.CharacterFocus.Controls.Add(this.Button_Refresh_Character);
             this.CharacterFocus.Controls.Add(this.HealthLevels);
             this.CharacterFocus.Controls.Add(this.Effects);
             this.CharacterFocus.Controls.Add(this.Label_PersonalEssence);
             this.CharacterFocus.Controls.Add(this.Label_PeripheralEssence);
             this.CharacterFocus.Controls.Add(this.Label_Willpower);
             this.CharacterFocus.Controls.Add(this.Label_Anima);
-            this.CharacterFocus.Controls.Add(this.PersonalEssence);
-            this.CharacterFocus.Controls.Add(this.PeripheralEssence);
-            this.CharacterFocus.Controls.Add(this.Willpower);
-            this.CharacterFocus.Controls.Add(this.Anima);
+            this.CharacterFocus.Controls.Add(this.upDown_Focus_PersonalEssence);
+            this.CharacterFocus.Controls.Add(this.upDown_Focus_PeripheralEssence);
+            this.CharacterFocus.Controls.Add(this.upDown_Focus_Willpower);
             this.CharacterFocus.Controls.Add(this.Label_Initiative);
-            this.CharacterFocus.Controls.Add(this.Initiative);
-            this.CharacterFocus.Controls.Add(this.Name);
+            this.CharacterFocus.Controls.Add(this.upDown_Focus_Initiative);
+            this.CharacterFocus.Controls.Add(this.textBox_name);
             this.CharacterFocus.Controls.Add(this.Type);
             this.CharacterFocus.Controls.Add(this.Portrait);
             this.CharacterFocus.Location = new System.Drawing.Point(382, 25);
@@ -208,9 +231,33 @@
             this.CharacterFocus.TabStop = false;
             this.CharacterFocus.Text = "Focus";
             // 
+            // comboBox_Focus_Anima
+            // 
+            this.comboBox_Focus_Anima.FormattingEnabled = true;
+            this.comboBox_Focus_Anima.Items.AddRange(new object[] {
+            "Dim",
+            "Glowing",
+            "Burning",
+            "Bonfire"});
+            this.comboBox_Focus_Anima.Location = new System.Drawing.Point(166, 141);
+            this.comboBox_Focus_Anima.MaxDropDownItems = 4;
+            this.comboBox_Focus_Anima.Name = "comboBox_Focus_Anima";
+            this.comboBox_Focus_Anima.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Focus_Anima.TabIndex = 18;
+            this.comboBox_Focus_Anima.Text = "Dim";
+            // 
+            // Button_Refresh_Character
+            // 
+            this.Button_Refresh_Character.Location = new System.Drawing.Point(7, 519);
+            this.Button_Refresh_Character.Name = "Button_Refresh_Character";
+            this.Button_Refresh_Character.Size = new System.Drawing.Size(75, 23);
+            this.Button_Refresh_Character.TabIndex = 17;
+            this.Button_Refresh_Character.Text = "Refresh Focus";
+            this.Button_Refresh_Character.UseVisualStyleBackColor = true;
+            // 
             // HealthLevels
             // 
-            this.HealthLevels.Controls.Add(this.HealthLevelTable);
+            this.HealthLevels.Controls.Add(this.Table_HealthLevels);
             this.HealthLevels.Location = new System.Drawing.Point(6, 246);
             this.HealthLevels.Name = "HealthLevels";
             this.HealthLevels.Size = new System.Drawing.Size(299, 69);
@@ -218,19 +265,19 @@
             this.HealthLevels.TabStop = false;
             this.HealthLevels.Text = "Health Levels";
             // 
-            // HealthLevelTable
+            // Table_HealthLevels
             // 
-            this.HealthLevelTable.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.HealthLevelTable.ColumnCount = 2;
-            this.HealthLevelTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HealthLevelTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HealthLevelTable.Location = new System.Drawing.Point(10, 19);
-            this.HealthLevelTable.Name = "HealthLevelTable";
-            this.HealthLevelTable.RowCount = 2;
-            this.HealthLevelTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HealthLevelTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.HealthLevelTable.Size = new System.Drawing.Size(283, 44);
-            this.HealthLevelTable.TabIndex = 0;
+            this.Table_HealthLevels.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Table_HealthLevels.ColumnCount = 2;
+            this.Table_HealthLevels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.Table_HealthLevels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.Table_HealthLevels.Location = new System.Drawing.Point(10, 19);
+            this.Table_HealthLevels.Name = "Table_HealthLevels";
+            this.Table_HealthLevels.RowCount = 2;
+            this.Table_HealthLevels.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.Table_HealthLevels.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.Table_HealthLevels.Size = new System.Drawing.Size(283, 44);
+            this.Table_HealthLevels.TabIndex = 0;
             // 
             // Effects
             // 
@@ -245,25 +292,10 @@
             // 
             // EffectsTablePanel
             // 
-            this.EffectsTablePanel.Controls.Add(this.EffectsTable);
             this.EffectsTablePanel.Location = new System.Drawing.Point(6, 19);
             this.EffectsTablePanel.Name = "EffectsTablePanel";
             this.EffectsTablePanel.Size = new System.Drawing.Size(287, 126);
             this.EffectsTablePanel.TabIndex = 0;
-            // 
-            // EffectsTable
-            // 
-            this.EffectsTable.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EffectsTable.ColumnCount = 2;
-            this.EffectsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.EffectsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.EffectsTable.Location = new System.Drawing.Point(7, 13);
-            this.EffectsTable.Name = "EffectsTable";
-            this.EffectsTable.RowCount = 2;
-            this.EffectsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.61905F));
-            this.EffectsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.38095F));
-            this.EffectsTable.Size = new System.Drawing.Size(268, 31);
-            this.EffectsTable.TabIndex = 0;
             // 
             // Button_AddEffect
             // 
@@ -304,39 +336,32 @@
             // Label_Anima
             // 
             this.Label_Anima.AutoSize = true;
-            this.Label_Anima.Location = new System.Drawing.Point(187, 221);
+            this.Label_Anima.Location = new System.Drawing.Point(124, 144);
             this.Label_Anima.Name = "Label_Anima";
             this.Label_Anima.Size = new System.Drawing.Size(36, 13);
             this.Label_Anima.TabIndex = 13;
             this.Label_Anima.Text = "Anima";
             // 
-            // PersonalEssence
+            // upDown_Focus_PersonalEssence
             // 
-            this.PersonalEssence.Location = new System.Drawing.Point(111, 193);
-            this.PersonalEssence.Name = "PersonalEssence";
-            this.PersonalEssence.Size = new System.Drawing.Size(70, 20);
-            this.PersonalEssence.TabIndex = 6;
+            this.upDown_Focus_PersonalEssence.Location = new System.Drawing.Point(111, 193);
+            this.upDown_Focus_PersonalEssence.Name = "upDown_Focus_PersonalEssence";
+            this.upDown_Focus_PersonalEssence.Size = new System.Drawing.Size(70, 20);
+            this.upDown_Focus_PersonalEssence.TabIndex = 6;
             // 
-            // PeripheralEssence
+            // upDown_Focus_PeripheralEssence
             // 
-            this.PeripheralEssence.Location = new System.Drawing.Point(111, 219);
-            this.PeripheralEssence.Name = "PeripheralEssence";
-            this.PeripheralEssence.Size = new System.Drawing.Size(70, 20);
-            this.PeripheralEssence.TabIndex = 8;
+            this.upDown_Focus_PeripheralEssence.Location = new System.Drawing.Point(111, 219);
+            this.upDown_Focus_PeripheralEssence.Name = "upDown_Focus_PeripheralEssence";
+            this.upDown_Focus_PeripheralEssence.Size = new System.Drawing.Size(70, 20);
+            this.upDown_Focus_PeripheralEssence.TabIndex = 8;
             // 
-            // Willpower
+            // upDown_Focus_Willpower
             // 
-            this.Willpower.Location = new System.Drawing.Point(250, 188);
-            this.Willpower.Name = "Willpower";
-            this.Willpower.Size = new System.Drawing.Size(37, 20);
-            this.Willpower.TabIndex = 7;
-            // 
-            // Anima
-            // 
-            this.Anima.Location = new System.Drawing.Point(250, 219);
-            this.Anima.Name = "Anima";
-            this.Anima.Size = new System.Drawing.Size(37, 20);
-            this.Anima.TabIndex = 9;
+            this.upDown_Focus_Willpower.Location = new System.Drawing.Point(250, 188);
+            this.upDown_Focus_Willpower.Name = "upDown_Focus_Willpower";
+            this.upDown_Focus_Willpower.Size = new System.Drawing.Size(37, 20);
+            this.upDown_Focus_Willpower.TabIndex = 7;
             // 
             // Label_Initiative
             // 
@@ -347,19 +372,19 @@
             this.Label_Initiative.TabIndex = 5;
             this.Label_Initiative.Text = "Current Initiative";
             // 
-            // Initiative
+            // upDown_Focus_Initiative
             // 
-            this.Initiative.Location = new System.Drawing.Point(105, 81);
-            this.Initiative.Name = "Initiative";
-            this.Initiative.Size = new System.Drawing.Size(76, 20);
-            this.Initiative.TabIndex = 4;
+            this.upDown_Focus_Initiative.Location = new System.Drawing.Point(105, 81);
+            this.upDown_Focus_Initiative.Name = "upDown_Focus_Initiative";
+            this.upDown_Focus_Initiative.Size = new System.Drawing.Size(76, 20);
+            this.upDown_Focus_Initiative.TabIndex = 4;
             // 
-            // Name
+            // textBox_name
             // 
-            this.Name.Location = new System.Drawing.Point(7, 20);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(100, 20);
-            this.Name.TabIndex = 3;
+            this.textBox_name.Location = new System.Drawing.Point(7, 20);
+            this.textBox_name.Name = "textBox_name";
+            this.textBox_name.Size = new System.Drawing.Size(100, 20);
+            this.textBox_name.TabIndex = 3;
             // 
             // Type
             // 
@@ -397,40 +422,29 @@
             this.Button_AddCharacter.UseVisualStyleBackColor = true;
             this.Button_AddCharacter.Click += new System.EventHandler(this.Button_AddCharacter_Click);
             // 
-            // InitiativeColumn
+            // Button_Refresh
             // 
-            this.InitiativeColumn.HeaderText = "Initiative";
-            this.InitiativeColumn.Name = "InitiativeColumn";
-            this.InitiativeColumn.Width = 50;
-            // 
-            // ParticipantName
-            // 
-            this.ParticipantName.HeaderText = "Name";
-            this.ParticipantName.Name = "ParticipantName";
-            // 
-            // ParticipantDetails
-            // 
-            this.ParticipantDetails.HeaderText = "Details";
-            this.ParticipantDetails.Name = "ParticipantDetails";
-            this.ParticipantDetails.Width = 150;
-            // 
-            // HasActedColumn
-            // 
-            this.HasActedColumn.HeaderText = "Acted?";
-            this.HasActedColumn.Name = "HasActedColumn";
-            this.HasActedColumn.Width = 50;
+            this.Button_Refresh.Location = new System.Drawing.Point(98, 502);
+            this.Button_Refresh.Name = "Button_Refresh";
+            this.Button_Refresh.Size = new System.Drawing.Size(75, 23);
+            this.Button_Refresh.TabIndex = 5;
+            this.Button_Refresh.Text = "Refresh";
+            this.Button_Refresh.UseVisualStyleBackColor = true;
+            this.Button_Refresh.Click += new System.EventHandler(this.Button_Refresh_Click);
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 585);
+            this.Controls.Add(this.Button_Refresh);
             this.Controls.Add(this.Button_AddCharacter);
             this.Controls.Add(this.Button_NextRound);
             this.Controls.Add(this.CharacterFocus);
             this.Controls.Add(this.CombatScreen);
             this.Controls.Add(this.MainMenu);
             this.MainMenuStrip = this.MainMenu;
+            this.Name = "MainScreen";
             this.Text = "MainScreen";
             this.CombatScreen.ResumeLayout(false);
             this.CombatTablePanel.ResumeLayout(false);
@@ -441,12 +455,10 @@
             this.CharacterFocus.PerformLayout();
             this.HealthLevels.ResumeLayout(false);
             this.Effects.ResumeLayout(false);
-            this.EffectsTablePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PersonalEssence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PeripheralEssence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Willpower)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Anima)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Initiative)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_PersonalEssence)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_PeripheralEssence)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_Willpower)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_Initiative)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -465,13 +477,12 @@
         private System.Windows.Forms.GroupBox CharacterFocus;
         private System.Windows.Forms.PictureBox Portrait;
         private System.Windows.Forms.Label Label_Initiative;
-        private System.Windows.Forms.NumericUpDown Initiative;
+        private System.Windows.Forms.NumericUpDown upDown_Focus_Initiative;
         private System.Windows.Forms.TextBox Type;
-        private System.Windows.Forms.TextBox Name;
-        private System.Windows.Forms.NumericUpDown Anima;
-        private System.Windows.Forms.NumericUpDown PeripheralEssence;
-        private System.Windows.Forms.NumericUpDown Willpower;
-        private System.Windows.Forms.NumericUpDown PersonalEssence;
+        private System.Windows.Forms.TextBox textBox_name;
+        private System.Windows.Forms.NumericUpDown upDown_Focus_PeripheralEssence;
+        private System.Windows.Forms.NumericUpDown upDown_Focus_Willpower;
+        private System.Windows.Forms.NumericUpDown upDown_Focus_PersonalEssence;
         private System.Windows.Forms.GroupBox Effects;
         private System.Windows.Forms.Button Button_AddEffect;
         private System.Windows.Forms.Label Label_Anima;
@@ -481,8 +492,7 @@
         private System.Windows.Forms.GroupBox HealthLevels;
         private System.Windows.Forms.Button Button_NextRound;
         private System.Windows.Forms.Button Button_AddCharacter;
-        private System.Windows.Forms.TableLayoutPanel EffectsTable;
-        private System.Windows.Forms.TableLayoutPanel HealthLevelTable;
+        private System.Windows.Forms.TableLayoutPanel Table_HealthLevels;
         private System.Windows.Forms.Panel EffectsTablePanel;
         private System.Windows.Forms.Panel CombatTablePanel;
         private System.Windows.Forms.DataGridView dataGridView_CombatTable;
@@ -490,5 +500,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantDetails;
         private System.Windows.Forms.DataGridViewCheckBoxColumn HasActedColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn InitiativeColumn;
+        private System.Windows.Forms.Button Button_Refresh_Character;
+        private System.Windows.Forms.Button Button_Refresh;
+        private System.Windows.Forms.ComboBox comboBox_Focus_Anima;
     }
 }
