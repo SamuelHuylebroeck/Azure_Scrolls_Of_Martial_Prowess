@@ -224,9 +224,13 @@ namespace Azure_Scrolls_of_Martial_Prowess
                 }
             }
         }
+
         #endregion EventHandling
 
+        private void numericUpDown_Focus_Onslaught_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 
 }

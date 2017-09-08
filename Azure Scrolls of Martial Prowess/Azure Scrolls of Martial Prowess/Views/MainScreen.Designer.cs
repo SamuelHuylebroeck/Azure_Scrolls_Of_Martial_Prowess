@@ -45,6 +45,7 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CharacterFocus = new System.Windows.Forms.GroupBox();
+            this.checkBox_Focus_KeepOnslaught = new System.Windows.Forms.CheckBox();
             this.label_Onslaught = new System.Windows.Forms.Label();
             this.numericUpDown_Focus_Onslaught = new System.Windows.Forms.NumericUpDown();
             this.comboBox_Focus_Anima = new System.Windows.Forms.ComboBox();
@@ -73,7 +74,6 @@
             this.Button_NextRound = new System.Windows.Forms.Button();
             this.Button_AddCharacter = new System.Windows.Forms.Button();
             this.Button_Refresh = new System.Windows.Forms.Button();
-            this.checkBox_Focus_KeepOnslaught = new System.Windows.Forms.CheckBox();
             this.CombatScreen.SuspendLayout();
             this.CombatTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).BeginInit();
@@ -98,7 +98,7 @@
             this.CombatScreen.Controls.Add(this.CombatTablePanel);
             this.CombatScreen.Location = new System.Drawing.Point(10, 25);
             this.CombatScreen.Name = "CombatScreen";
-            this.CombatScreen.Size = new System.Drawing.Size(372, 457);
+            this.CombatScreen.Size = new System.Drawing.Size(606, 592);
             this.CombatScreen.TabIndex = 0;
             this.CombatScreen.TabStop = false;
             this.CombatScreen.Text = "CombatScreen";
@@ -107,9 +107,10 @@
             // 
             this.CombatTablePanel.AutoScroll = true;
             this.CombatTablePanel.Controls.Add(this.dataGridView_CombatTable);
-            this.CombatTablePanel.Location = new System.Drawing.Point(2, 19);
+            this.CombatTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CombatTablePanel.Location = new System.Drawing.Point(3, 16);
             this.CombatTablePanel.Name = "CombatTablePanel";
-            this.CombatTablePanel.Size = new System.Drawing.Size(364, 418);
+            this.CombatTablePanel.Size = new System.Drawing.Size(600, 573);
             this.CombatTablePanel.TabIndex = 1;
             // 
             // dataGridView_CombatTable
@@ -157,31 +158,35 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView_CombatTable.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_CombatTable.RowTemplate.Height = 25;
-            this.dataGridView_CombatTable.Size = new System.Drawing.Size(364, 418);
+            this.dataGridView_CombatTable.Size = new System.Drawing.Size(600, 573);
             this.dataGridView_CombatTable.TabIndex = 1;
             // 
             // InitiativeColumn
             // 
+            this.InitiativeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.InitiativeColumn.HeaderText = "Initiative";
             this.InitiativeColumn.Name = "InitiativeColumn";
-            this.InitiativeColumn.Width = 50;
+            this.InitiativeColumn.Width = 71;
             // 
             // ParticipantName
             // 
+            this.ParticipantName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ParticipantName.HeaderText = "Name";
             this.ParticipantName.Name = "ParticipantName";
+            this.ParticipantName.Width = 60;
             // 
             // ParticipantDetails
             // 
+            this.ParticipantDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ParticipantDetails.HeaderText = "Details";
             this.ParticipantDetails.Name = "ParticipantDetails";
-            this.ParticipantDetails.Width = 150;
             // 
             // HasActedColumn
             // 
+            this.HasActedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.HasActedColumn.HeaderText = "Acted?";
             this.HasActedColumn.Name = "HasActedColumn";
-            this.HasActedColumn.Width = 50;
+            this.HasActedColumn.Width = 47;
             // 
             // MainMenu
             // 
@@ -190,7 +195,7 @@
             this.editToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(828, 24);
+            this.MainMenu.Size = new System.Drawing.Size(1010, 24);
             this.MainMenu.TabIndex = 1;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -249,17 +254,28 @@
             this.CharacterFocus.Controls.Add(this.textBox_name);
             this.CharacterFocus.Controls.Add(this.Type);
             this.CharacterFocus.Controls.Add(this.Portrait);
-            this.CharacterFocus.Location = new System.Drawing.Point(382, 25);
+            this.CharacterFocus.Location = new System.Drawing.Point(622, 27);
             this.CharacterFocus.Name = "CharacterFocus";
-            this.CharacterFocus.Size = new System.Drawing.Size(376, 621);
+            this.CharacterFocus.Size = new System.Drawing.Size(376, 628);
             this.CharacterFocus.TabIndex = 2;
             this.CharacterFocus.TabStop = false;
             this.CharacterFocus.Text = "Focus";
             // 
+            // checkBox_Focus_KeepOnslaught
+            // 
+            this.checkBox_Focus_KeepOnslaught.AutoSize = true;
+            this.checkBox_Focus_KeepOnslaught.Location = new System.Drawing.Point(105, 124);
+            this.checkBox_Focus_KeepOnslaught.Name = "checkBox_Focus_KeepOnslaught";
+            this.checkBox_Focus_KeepOnslaught.Size = new System.Drawing.Size(102, 17);
+            this.checkBox_Focus_KeepOnslaught.TabIndex = 21;
+            this.checkBox_Focus_KeepOnslaught.Text = "Keep Onslaught";
+            this.checkBox_Focus_KeepOnslaught.UseVisualStyleBackColor = true;
+            this.checkBox_Focus_KeepOnslaught.CheckedChanged += new System.EventHandler(this.checkBox_Focus_KeepOnslaught_CheckedChanged);
+            // 
             // label_Onslaught
             // 
             this.label_Onslaught.AutoSize = true;
-            this.label_Onslaught.Location = new System.Drawing.Point(19, 114);
+            this.label_Onslaught.Location = new System.Drawing.Point(6, 99);
             this.label_Onslaught.Name = "label_Onslaught";
             this.label_Onslaught.Size = new System.Drawing.Size(55, 13);
             this.label_Onslaught.TabIndex = 20;
@@ -267,10 +283,12 @@
             // 
             // numericUpDown_Focus_Onslaught
             // 
-            this.numericUpDown_Focus_Onslaught.Location = new System.Drawing.Point(105, 108);
+            this.numericUpDown_Focus_Onslaught.Location = new System.Drawing.Point(105, 97);
             this.numericUpDown_Focus_Onslaught.Name = "numericUpDown_Focus_Onslaught";
             this.numericUpDown_Focus_Onslaught.Size = new System.Drawing.Size(76, 20);
             this.numericUpDown_Focus_Onslaught.TabIndex = 19;
+            this.numericUpDown_Focus_Onslaught.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown_Focus_Onslaught.ValueChanged += new System.EventHandler(this.numericUpDown_Focus_Onslaught_ValueChanged);
             // 
             // comboBox_Focus_Anima
             // 
@@ -280,7 +298,7 @@
             "Glowing",
             "Burning",
             "Bonfire"});
-            this.comboBox_Focus_Anima.Location = new System.Drawing.Point(166, 141);
+            this.comboBox_Focus_Anima.Location = new System.Drawing.Point(105, 147);
             this.comboBox_Focus_Anima.MaxDropDownItems = 4;
             this.comboBox_Focus_Anima.Name = "comboBox_Focus_Anima";
             this.comboBox_Focus_Anima.Size = new System.Drawing.Size(121, 21);
@@ -289,7 +307,7 @@
             // 
             // Button_Refresh_Character
             // 
-            this.Button_Refresh_Character.Location = new System.Drawing.Point(6, 592);
+            this.Button_Refresh_Character.Location = new System.Drawing.Point(6, 596);
             this.Button_Refresh_Character.Name = "Button_Refresh_Character";
             this.Button_Refresh_Character.Size = new System.Drawing.Size(75, 23);
             this.Button_Refresh_Character.TabIndex = 17;
@@ -302,7 +320,7 @@
             this.HealthLevels.Controls.Add(this.dataGridView_Focus_HealthLevels);
             this.HealthLevels.Location = new System.Drawing.Point(6, 246);
             this.HealthLevels.Name = "HealthLevels";
-            this.HealthLevels.Size = new System.Drawing.Size(299, 94);
+            this.HealthLevels.Size = new System.Drawing.Size(364, 94);
             this.HealthLevels.TabIndex = 14;
             this.HealthLevels.TabStop = false;
             this.HealthLevels.Text = "Health Levels";
@@ -322,7 +340,7 @@
             this.dataGridView_Focus_HealthLevels.Name = "dataGridView_Focus_HealthLevels";
             this.dataGridView_Focus_HealthLevels.RowHeadersVisible = false;
             this.dataGridView_Focus_HealthLevels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_Focus_HealthLevels.Size = new System.Drawing.Size(293, 75);
+            this.dataGridView_Focus_HealthLevels.Size = new System.Drawing.Size(358, 75);
             this.dataGridView_Focus_HealthLevels.TabIndex = 0;
             // 
             // Effects
@@ -331,17 +349,18 @@
             this.Effects.Controls.Add(this.Button_AddEffect);
             this.Effects.Location = new System.Drawing.Point(7, 360);
             this.Effects.Name = "Effects";
-            this.Effects.Size = new System.Drawing.Size(299, 226);
+            this.Effects.Size = new System.Drawing.Size(363, 226);
             this.Effects.TabIndex = 16;
             this.Effects.TabStop = false;
             this.Effects.Text = "Effects";
             // 
             // EffectsTablePanel
             // 
+            this.EffectsTablePanel.AutoSize = true;
             this.EffectsTablePanel.Controls.Add(this.dataGridView_Focus_Effects);
             this.EffectsTablePanel.Location = new System.Drawing.Point(6, 19);
             this.EffectsTablePanel.Name = "EffectsTablePanel";
-            this.EffectsTablePanel.Size = new System.Drawing.Size(287, 172);
+            this.EffectsTablePanel.Size = new System.Drawing.Size(354, 172);
             this.EffectsTablePanel.TabIndex = 0;
             // 
             // dataGridView_Focus_Effects
@@ -358,27 +377,32 @@
             this.dataGridView_Focus_Effects.Name = "dataGridView_Focus_Effects";
             this.dataGridView_Focus_Effects.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView_Focus_Effects.RowHeadersVisible = false;
-            this.dataGridView_Focus_Effects.Size = new System.Drawing.Size(287, 172);
+            this.dataGridView_Focus_Effects.Size = new System.Drawing.Size(354, 172);
             this.dataGridView_Focus_Effects.TabIndex = 0;
             // 
             // EffectName
             // 
+            this.EffectName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.EffectName.HeaderText = "Name";
             this.EffectName.Name = "EffectName";
+            this.EffectName.Width = 60;
             // 
             // EffectDescription
             // 
+            this.EffectDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.EffectDescription.HeaderText = "Description";
             this.EffectDescription.Name = "EffectDescription";
             // 
             // EffectTurnsRemaining
             // 
+            this.EffectTurnsRemaining.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.EffectTurnsRemaining.HeaderText = "TR";
             this.EffectTurnsRemaining.Name = "EffectTurnsRemaining";
+            this.EffectTurnsRemaining.Width = 47;
             // 
             // Button_AddEffect
             // 
-            this.Button_AddEffect.Location = new System.Drawing.Point(217, 197);
+            this.Button_AddEffect.Location = new System.Drawing.Point(285, 197);
             this.Button_AddEffect.Name = "Button_AddEffect";
             this.Button_AddEffect.Size = new System.Drawing.Size(75, 23);
             this.Button_AddEffect.TabIndex = 15;
@@ -389,7 +413,7 @@
             // Label_PersonalEssence
             // 
             this.Label_PersonalEssence.AutoSize = true;
-            this.Label_PersonalEssence.Location = new System.Drawing.Point(13, 196);
+            this.Label_PersonalEssence.Location = new System.Drawing.Point(7, 176);
             this.Label_PersonalEssence.Name = "Label_PersonalEssence";
             this.Label_PersonalEssence.Size = new System.Drawing.Size(92, 13);
             this.Label_PersonalEssence.TabIndex = 10;
@@ -398,7 +422,7 @@
             // Label_PeripheralEssence
             // 
             this.Label_PeripheralEssence.AutoSize = true;
-            this.Label_PeripheralEssence.Location = new System.Drawing.Point(16, 221);
+            this.Label_PeripheralEssence.Location = new System.Drawing.Point(6, 202);
             this.Label_PeripheralEssence.Name = "Label_PeripheralEssence";
             this.Label_PeripheralEssence.Size = new System.Drawing.Size(98, 13);
             this.Label_PeripheralEssence.TabIndex = 11;
@@ -407,7 +431,7 @@
             // Label_Willpower
             // 
             this.Label_Willpower.AutoSize = true;
-            this.Label_Willpower.Location = new System.Drawing.Point(187, 195);
+            this.Label_Willpower.Location = new System.Drawing.Point(6, 228);
             this.Label_Willpower.Name = "Label_Willpower";
             this.Label_Willpower.Size = new System.Drawing.Size(53, 13);
             this.Label_Willpower.TabIndex = 12;
@@ -416,7 +440,7 @@
             // Label_Anima
             // 
             this.Label_Anima.AutoSize = true;
-            this.Label_Anima.Location = new System.Drawing.Point(124, 144);
+            this.Label_Anima.Location = new System.Drawing.Point(6, 149);
             this.Label_Anima.Name = "Label_Anima";
             this.Label_Anima.Size = new System.Drawing.Size(36, 13);
             this.Label_Anima.TabIndex = 13;
@@ -424,29 +448,32 @@
             // 
             // numericUpDown_Focus_PersonalEssence
             // 
-            this.numericUpDown_Focus_PersonalEssence.Location = new System.Drawing.Point(111, 193);
+            this.numericUpDown_Focus_PersonalEssence.Location = new System.Drawing.Point(105, 174);
             this.numericUpDown_Focus_PersonalEssence.Name = "numericUpDown_Focus_PersonalEssence";
             this.numericUpDown_Focus_PersonalEssence.Size = new System.Drawing.Size(70, 20);
             this.numericUpDown_Focus_PersonalEssence.TabIndex = 6;
+            this.numericUpDown_Focus_PersonalEssence.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // numericUpDown_Focus_PeripheralEssence
             // 
-            this.numericUpDown_Focus_PeripheralEssence.Location = new System.Drawing.Point(111, 219);
+            this.numericUpDown_Focus_PeripheralEssence.Location = new System.Drawing.Point(105, 200);
             this.numericUpDown_Focus_PeripheralEssence.Name = "numericUpDown_Focus_PeripheralEssence";
             this.numericUpDown_Focus_PeripheralEssence.Size = new System.Drawing.Size(70, 20);
             this.numericUpDown_Focus_PeripheralEssence.TabIndex = 8;
+            this.numericUpDown_Focus_PeripheralEssence.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // numericUpDown_Focus_Willpower
             // 
-            this.numericUpDown_Focus_Willpower.Location = new System.Drawing.Point(250, 188);
+            this.numericUpDown_Focus_Willpower.Location = new System.Drawing.Point(105, 226);
             this.numericUpDown_Focus_Willpower.Name = "numericUpDown_Focus_Willpower";
-            this.numericUpDown_Focus_Willpower.Size = new System.Drawing.Size(37, 20);
+            this.numericUpDown_Focus_Willpower.Size = new System.Drawing.Size(70, 20);
             this.numericUpDown_Focus_Willpower.TabIndex = 7;
+            this.numericUpDown_Focus_Willpower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Label_Initiative
             // 
             this.Label_Initiative.AutoSize = true;
-            this.Label_Initiative.Location = new System.Drawing.Point(16, 83);
+            this.Label_Initiative.Location = new System.Drawing.Point(6, 73);
             this.Label_Initiative.Name = "Label_Initiative";
             this.Label_Initiative.Size = new System.Drawing.Size(83, 13);
             this.Label_Initiative.TabIndex = 5;
@@ -454,23 +481,24 @@
             // 
             // numericUpDown_Focus_Initiative
             // 
-            this.numericUpDown_Focus_Initiative.Location = new System.Drawing.Point(105, 81);
+            this.numericUpDown_Focus_Initiative.Location = new System.Drawing.Point(105, 71);
             this.numericUpDown_Focus_Initiative.Name = "numericUpDown_Focus_Initiative";
             this.numericUpDown_Focus_Initiative.Size = new System.Drawing.Size(76, 20);
             this.numericUpDown_Focus_Initiative.TabIndex = 4;
+            this.numericUpDown_Focus_Initiative.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(7, 20);
+            this.textBox_name.Location = new System.Drawing.Point(6, 14);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(100, 20);
+            this.textBox_name.Size = new System.Drawing.Size(175, 20);
             this.textBox_name.TabIndex = 3;
             // 
             // Type
             // 
-            this.Type.Location = new System.Drawing.Point(6, 46);
+            this.Type.Location = new System.Drawing.Point(6, 40);
             this.Type.Name = "Type";
-            this.Type.Size = new System.Drawing.Size(100, 20);
+            this.Type.Size = new System.Drawing.Size(175, 20);
             this.Type.TabIndex = 2;
             // 
             // Portrait
@@ -484,7 +512,7 @@
             // 
             // Button_NextRound
             // 
-            this.Button_NextRound.Location = new System.Drawing.Point(16, 502);
+            this.Button_NextRound.Location = new System.Drawing.Point(538, 623);
             this.Button_NextRound.Name = "Button_NextRound";
             this.Button_NextRound.Size = new System.Drawing.Size(75, 23);
             this.Button_NextRound.TabIndex = 3;
@@ -494,7 +522,7 @@
             // 
             // Button_AddCharacter
             // 
-            this.Button_AddCharacter.Location = new System.Drawing.Point(260, 501);
+            this.Button_AddCharacter.Location = new System.Drawing.Point(13, 623);
             this.Button_AddCharacter.Name = "Button_AddCharacter";
             this.Button_AddCharacter.Size = new System.Drawing.Size(75, 23);
             this.Button_AddCharacter.TabIndex = 4;
@@ -504,7 +532,7 @@
             // 
             // Button_Refresh
             // 
-            this.Button_Refresh.Location = new System.Drawing.Point(98, 502);
+            this.Button_Refresh.Location = new System.Drawing.Point(457, 623);
             this.Button_Refresh.Name = "Button_Refresh";
             this.Button_Refresh.Size = new System.Drawing.Size(75, 23);
             this.Button_Refresh.TabIndex = 5;
@@ -512,22 +540,11 @@
             this.Button_Refresh.UseVisualStyleBackColor = true;
             this.Button_Refresh.Click += new System.EventHandler(this.Button_Refresh_Click);
             // 
-            // checkBox_Focus_KeepOnslaught
-            // 
-            this.checkBox_Focus_KeepOnslaught.AutoSize = true;
-            this.checkBox_Focus_KeepOnslaught.Location = new System.Drawing.Point(188, 110);
-            this.checkBox_Focus_KeepOnslaught.Name = "checkBox_Focus_KeepOnslaught";
-            this.checkBox_Focus_KeepOnslaught.Size = new System.Drawing.Size(102, 17);
-            this.checkBox_Focus_KeepOnslaught.TabIndex = 21;
-            this.checkBox_Focus_KeepOnslaught.Text = "Keep Onslaught";
-            this.checkBox_Focus_KeepOnslaught.UseVisualStyleBackColor = true;
-            this.checkBox_Focus_KeepOnslaught.CheckedChanged += new System.EventHandler(this.checkBox_Focus_KeepOnslaught_CheckedChanged);
-            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 658);
+            this.ClientSize = new System.Drawing.Size(1010, 658);
             this.Controls.Add(this.Button_Refresh);
             this.Controls.Add(this.Button_AddCharacter);
             this.Controls.Add(this.Button_NextRound);
@@ -548,6 +565,7 @@
             this.HealthLevels.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Focus_HealthLevels)).EndInit();
             this.Effects.ResumeLayout(false);
+            this.Effects.PerformLayout();
             this.EffectsTablePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Focus_Effects)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_PersonalEssence)).EndInit();
@@ -590,20 +608,20 @@
         private System.Windows.Forms.Panel EffectsTablePanel;
         private System.Windows.Forms.Panel CombatTablePanel;
         private System.Windows.Forms.DataGridView dataGridView_CombatTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantDetails;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn HasActedColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InitiativeColumn;
         private System.Windows.Forms.Button Button_Refresh_Character;
         private System.Windows.Forms.Button Button_Refresh;
         private System.Windows.Forms.ComboBox comboBox_Focus_Anima;
         private System.Windows.Forms.DataGridView dataGridView_Focus_HealthLevels;
         private System.Windows.Forms.DataGridView dataGridView_Focus_Effects;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EffectName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EffectDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EffectTurnsRemaining;
         private System.Windows.Forms.Label label_Onslaught;
         private System.Windows.Forms.NumericUpDown numericUpDown_Focus_Onslaught;
         private System.Windows.Forms.CheckBox checkBox_Focus_KeepOnslaught;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectTurnsRemaining;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectName;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn HasActedColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InitiativeColumn;
     }
 }
