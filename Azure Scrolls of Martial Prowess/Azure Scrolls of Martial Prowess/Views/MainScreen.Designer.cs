@@ -28,16 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CombatScreen = new System.Windows.Forms.GroupBox();
             this.CombatTablePanel = new System.Windows.Forms.Panel();
             this.dataGridView_CombatTable = new System.Windows.Forms.DataGridView();
-            this.InitiativeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +41,7 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CharacterFocus = new System.Windows.Forms.GroupBox();
+            this.checkBox_Focus_KeepOnslaught = new System.Windows.Forms.CheckBox();
             this.label_Onslaught = new System.Windows.Forms.Label();
             this.numericUpDown_Focus_Onslaught = new System.Windows.Forms.NumericUpDown();
             this.comboBox_Focus_Anima = new System.Windows.Forms.ComboBox();
@@ -54,9 +51,6 @@
             this.Effects = new System.Windows.Forms.GroupBox();
             this.EffectsTablePanel = new System.Windows.Forms.Panel();
             this.dataGridView_Focus_Effects = new System.Windows.Forms.DataGridView();
-            this.EffectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EffectDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EffectTurnsRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Button_AddEffect = new System.Windows.Forms.Button();
             this.Label_PersonalEssence = new System.Windows.Forms.Label();
             this.Label_PeripheralEssence = new System.Windows.Forms.Label();
@@ -73,7 +67,13 @@
             this.Button_NextRound = new System.Windows.Forms.Button();
             this.Button_AddCharacter = new System.Windows.Forms.Button();
             this.Button_Refresh = new System.Windows.Forms.Button();
-            this.checkBox_Focus_KeepOnslaught = new System.Windows.Forms.CheckBox();
+            this.InitiativeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.EffectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EffectDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EffectTurnsRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CombatScreen.SuspendLayout();
             this.CombatTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).BeginInit();
@@ -98,7 +98,7 @@
             this.CombatScreen.Controls.Add(this.CombatTablePanel);
             this.CombatScreen.Location = new System.Drawing.Point(10, 25);
             this.CombatScreen.Name = "CombatScreen";
-            this.CombatScreen.Size = new System.Drawing.Size(372, 457);
+            this.CombatScreen.Size = new System.Drawing.Size(576, 586);
             this.CombatScreen.TabIndex = 0;
             this.CombatScreen.TabStop = false;
             this.CombatScreen.Text = "CombatScreen";
@@ -107,9 +107,10 @@
             // 
             this.CombatTablePanel.AutoScroll = true;
             this.CombatTablePanel.Controls.Add(this.dataGridView_CombatTable);
-            this.CombatTablePanel.Location = new System.Drawing.Point(2, 19);
+            this.CombatTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CombatTablePanel.Location = new System.Drawing.Point(3, 16);
             this.CombatTablePanel.Name = "CombatTablePanel";
-            this.CombatTablePanel.Size = new System.Drawing.Size(364, 418);
+            this.CombatTablePanel.Size = new System.Drawing.Size(570, 567);
             this.CombatTablePanel.TabIndex = 1;
             // 
             // dataGridView_CombatTable
@@ -122,14 +123,14 @@
             this.dataGridView_CombatTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dataGridView_CombatTable.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView_CombatTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView_CombatTable.ColumnHeadersHeight = 25;
             this.dataGridView_CombatTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView_CombatTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -137,51 +138,27 @@
             this.ParticipantName,
             this.ParticipantDetails,
             this.HasActedColumn});
-            this.dataGridView_CombatTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_CombatTable.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridView_CombatTable.Location = new System.Drawing.Point(0, 0);
             this.dataGridView_CombatTable.Name = "dataGridView_CombatTable";
             this.dataGridView_CombatTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView_CombatTable.RowHeadersVisible = false;
             this.dataGridView_CombatTable.RowHeadersWidth = 40;
             this.dataGridView_CombatTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView_CombatTable.RowTemplate.Height = 25;
-            this.dataGridView_CombatTable.Size = new System.Drawing.Size(364, 418);
+            this.dataGridView_CombatTable.Size = new System.Drawing.Size(568, 561);
             this.dataGridView_CombatTable.TabIndex = 1;
-            // 
-            // InitiativeColumn
-            // 
-            this.InitiativeColumn.HeaderText = "Initiative";
-            this.InitiativeColumn.Name = "InitiativeColumn";
-            this.InitiativeColumn.Width = 50;
-            // 
-            // ParticipantName
-            // 
-            this.ParticipantName.HeaderText = "Name";
-            this.ParticipantName.Name = "ParticipantName";
-            // 
-            // ParticipantDetails
-            // 
-            this.ParticipantDetails.HeaderText = "Details";
-            this.ParticipantDetails.Name = "ParticipantDetails";
-            this.ParticipantDetails.Width = 150;
-            // 
-            // HasActedColumn
-            // 
-            this.HasActedColumn.HeaderText = "Acted?";
-            this.HasActedColumn.Name = "HasActedColumn";
-            this.HasActedColumn.Width = 50;
             // 
             // MainMenu
             // 
@@ -190,7 +167,7 @@
             this.editToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(828, 24);
+            this.MainMenu.Size = new System.Drawing.Size(980, 24);
             this.MainMenu.TabIndex = 1;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -249,12 +226,23 @@
             this.CharacterFocus.Controls.Add(this.textBox_name);
             this.CharacterFocus.Controls.Add(this.Type);
             this.CharacterFocus.Controls.Add(this.Portrait);
-            this.CharacterFocus.Location = new System.Drawing.Point(382, 25);
+            this.CharacterFocus.Location = new System.Drawing.Point(592, 25);
             this.CharacterFocus.Name = "CharacterFocus";
             this.CharacterFocus.Size = new System.Drawing.Size(376, 621);
             this.CharacterFocus.TabIndex = 2;
             this.CharacterFocus.TabStop = false;
             this.CharacterFocus.Text = "Focus";
+            // 
+            // checkBox_Focus_KeepOnslaught
+            // 
+            this.checkBox_Focus_KeepOnslaught.AutoSize = true;
+            this.checkBox_Focus_KeepOnslaught.Location = new System.Drawing.Point(188, 110);
+            this.checkBox_Focus_KeepOnslaught.Name = "checkBox_Focus_KeepOnslaught";
+            this.checkBox_Focus_KeepOnslaught.Size = new System.Drawing.Size(102, 17);
+            this.checkBox_Focus_KeepOnslaught.TabIndex = 21;
+            this.checkBox_Focus_KeepOnslaught.Text = "Keep Onslaught";
+            this.checkBox_Focus_KeepOnslaught.UseVisualStyleBackColor = true;
+            this.checkBox_Focus_KeepOnslaught.CheckedChanged += new System.EventHandler(this.checkBox_Focus_KeepOnslaught_CheckedChanged);
             // 
             // label_Onslaught
             // 
@@ -302,7 +290,7 @@
             this.HealthLevels.Controls.Add(this.dataGridView_Focus_HealthLevels);
             this.HealthLevels.Location = new System.Drawing.Point(6, 246);
             this.HealthLevels.Name = "HealthLevels";
-            this.HealthLevels.Size = new System.Drawing.Size(299, 94);
+            this.HealthLevels.Size = new System.Drawing.Size(354, 94);
             this.HealthLevels.TabIndex = 14;
             this.HealthLevels.TabStop = false;
             this.HealthLevels.Text = "Health Levels";
@@ -322,7 +310,7 @@
             this.dataGridView_Focus_HealthLevels.Name = "dataGridView_Focus_HealthLevels";
             this.dataGridView_Focus_HealthLevels.RowHeadersVisible = false;
             this.dataGridView_Focus_HealthLevels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_Focus_HealthLevels.Size = new System.Drawing.Size(293, 75);
+            this.dataGridView_Focus_HealthLevels.Size = new System.Drawing.Size(348, 75);
             this.dataGridView_Focus_HealthLevels.TabIndex = 0;
             // 
             // Effects
@@ -360,21 +348,6 @@
             this.dataGridView_Focus_Effects.RowHeadersVisible = false;
             this.dataGridView_Focus_Effects.Size = new System.Drawing.Size(287, 172);
             this.dataGridView_Focus_Effects.TabIndex = 0;
-            // 
-            // EffectName
-            // 
-            this.EffectName.HeaderText = "Name";
-            this.EffectName.Name = "EffectName";
-            // 
-            // EffectDescription
-            // 
-            this.EffectDescription.HeaderText = "Description";
-            this.EffectDescription.Name = "EffectDescription";
-            // 
-            // EffectTurnsRemaining
-            // 
-            this.EffectTurnsRemaining.HeaderText = "TR";
-            this.EffectTurnsRemaining.Name = "EffectTurnsRemaining";
             // 
             // Button_AddEffect
             // 
@@ -484,7 +457,7 @@
             // 
             // Button_NextRound
             // 
-            this.Button_NextRound.Location = new System.Drawing.Point(16, 502);
+            this.Button_NextRound.Location = new System.Drawing.Point(506, 617);
             this.Button_NextRound.Name = "Button_NextRound";
             this.Button_NextRound.Size = new System.Drawing.Size(75, 23);
             this.Button_NextRound.TabIndex = 3;
@@ -494,7 +467,7 @@
             // 
             // Button_AddCharacter
             // 
-            this.Button_AddCharacter.Location = new System.Drawing.Point(260, 501);
+            this.Button_AddCharacter.Location = new System.Drawing.Point(10, 617);
             this.Button_AddCharacter.Name = "Button_AddCharacter";
             this.Button_AddCharacter.Size = new System.Drawing.Size(75, 23);
             this.Button_AddCharacter.TabIndex = 4;
@@ -504,7 +477,7 @@
             // 
             // Button_Refresh
             // 
-            this.Button_Refresh.Location = new System.Drawing.Point(98, 502);
+            this.Button_Refresh.Location = new System.Drawing.Point(425, 617);
             this.Button_Refresh.Name = "Button_Refresh";
             this.Button_Refresh.Size = new System.Drawing.Size(75, 23);
             this.Button_Refresh.TabIndex = 5;
@@ -512,22 +485,58 @@
             this.Button_Refresh.UseVisualStyleBackColor = true;
             this.Button_Refresh.Click += new System.EventHandler(this.Button_Refresh_Click);
             // 
-            // checkBox_Focus_KeepOnslaught
+            // InitiativeColumn
             // 
-            this.checkBox_Focus_KeepOnslaught.AutoSize = true;
-            this.checkBox_Focus_KeepOnslaught.Location = new System.Drawing.Point(188, 110);
-            this.checkBox_Focus_KeepOnslaught.Name = "checkBox_Focus_KeepOnslaught";
-            this.checkBox_Focus_KeepOnslaught.Size = new System.Drawing.Size(102, 17);
-            this.checkBox_Focus_KeepOnslaught.TabIndex = 21;
-            this.checkBox_Focus_KeepOnslaught.Text = "Keep Onslaught";
-            this.checkBox_Focus_KeepOnslaught.UseVisualStyleBackColor = true;
-            this.checkBox_Focus_KeepOnslaught.CheckedChanged += new System.EventHandler(this.checkBox_Focus_KeepOnslaught_CheckedChanged);
+            this.InitiativeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.InitiativeColumn.HeaderText = "Initiative";
+            this.InitiativeColumn.Name = "InitiativeColumn";
+            this.InitiativeColumn.Width = 71;
+            // 
+            // ParticipantName
+            // 
+            this.ParticipantName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ParticipantName.HeaderText = "Name";
+            this.ParticipantName.Name = "ParticipantName";
+            this.ParticipantName.Width = 60;
+            // 
+            // ParticipantDetails
+            // 
+            this.ParticipantDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ParticipantDetails.HeaderText = "Details";
+            this.ParticipantDetails.Name = "ParticipantDetails";
+            // 
+            // HasActedColumn
+            // 
+            this.HasActedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.HasActedColumn.HeaderText = "Acted?";
+            this.HasActedColumn.Name = "HasActedColumn";
+            this.HasActedColumn.Width = 47;
+            // 
+            // EffectName
+            // 
+            this.EffectName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EffectName.HeaderText = "Name";
+            this.EffectName.Name = "EffectName";
+            this.EffectName.Width = 60;
+            // 
+            // EffectDescription
+            // 
+            this.EffectDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EffectDescription.HeaderText = "Description";
+            this.EffectDescription.Name = "EffectDescription";
+            // 
+            // EffectTurnsRemaining
+            // 
+            this.EffectTurnsRemaining.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EffectTurnsRemaining.HeaderText = "TR";
+            this.EffectTurnsRemaining.Name = "EffectTurnsRemaining";
+            this.EffectTurnsRemaining.Width = 47;
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 658);
+            this.ClientSize = new System.Drawing.Size(980, 658);
             this.Controls.Add(this.Button_Refresh);
             this.Controls.Add(this.Button_AddCharacter);
             this.Controls.Add(this.Button_NextRound);
@@ -590,20 +599,20 @@
         private System.Windows.Forms.Panel EffectsTablePanel;
         private System.Windows.Forms.Panel CombatTablePanel;
         private System.Windows.Forms.DataGridView dataGridView_CombatTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantDetails;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn HasActedColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InitiativeColumn;
         private System.Windows.Forms.Button Button_Refresh_Character;
         private System.Windows.Forms.Button Button_Refresh;
         private System.Windows.Forms.ComboBox comboBox_Focus_Anima;
         private System.Windows.Forms.DataGridView dataGridView_Focus_HealthLevels;
         private System.Windows.Forms.DataGridView dataGridView_Focus_Effects;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EffectName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EffectDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EffectTurnsRemaining;
         private System.Windows.Forms.Label label_Onslaught;
         private System.Windows.Forms.NumericUpDown numericUpDown_Focus_Onslaught;
         private System.Windows.Forms.CheckBox checkBox_Focus_KeepOnslaught;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectTurnsRemaining;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectName;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn HasActedColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InitiativeColumn;
     }
 }
