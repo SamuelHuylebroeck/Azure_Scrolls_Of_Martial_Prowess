@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Azure_Scrolls_of_Martial_Prowess</RootNamespace>
     <AssemblyName>Azure Scrolls of Martial Prowess</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,7 +55,7 @@
     <Compile Include="Models\Battlegroup.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\CharacterTemplate.cs" />
-    <Compile Include="Configuration\Constants.cs" />
+    <Compile Include="Util\Constants.cs" />
     <Compile Include="Models\Combat.cs" />
     <Compile Include="Models\Effect.cs" />
     <Compile Include="Views\AddCharacter.cs">
@@ -62,6 +63,12 @@
     </Compile>
     <Compile Include="Views\AddCharacter.Designer.cs">
       <DependentUpon>AddCharacter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddEffect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddEffect.Designer.cs">
+      <DependentUpon>AddEffect.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainScreen.cs">
       <SubType>Form</SubType>
@@ -74,6 +81,9 @@
     <EmbeddedResource Include="Views\AddCharacter.resx">
       <DependentUpon>AddCharacter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddEffect.resx">
+      <DependentUpon>AddEffect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +95,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

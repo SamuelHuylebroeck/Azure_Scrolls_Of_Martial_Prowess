@@ -40,6 +40,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Views
             CharacterTemplate template = new CharacterTemplate(type, willpower, periE, persE);
             Character newChar = new Character(name, template);
             combatController.AddCharacter(newChar);
+            combatController.UpdateFocus(newChar);
             this.Close();
         }
     }

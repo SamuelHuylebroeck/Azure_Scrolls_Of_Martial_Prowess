@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Azure_Scrolls_of_Martial_Prowess.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
         public CharacterTemplate(String Type, int Willpower, int PeripheralEssence,int PersonalEssence): this(Type, Willpower, PeripheralEssence, PersonalEssence, null, false)
         {
             List<String> hl = new List<String>();
-            String[] levels = { "0", "-1", "-1", "-2", "-2", "-4", "Inc" };
+            String[] levels = { "0", "-1", "-1", "-2", "-2", "-4", Constants.HL_INC };
             foreach(String level in levels)
             {
                 hl.Add(level);

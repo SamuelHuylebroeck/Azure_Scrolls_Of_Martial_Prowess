@@ -114,9 +114,9 @@ namespace AzureUnitTests
             cc.AddCharacter(basicChar);
             cc.NextRound();
 
-            Assert.AreEqual(2, basicChar.GetEffectByName("temp").remainingTurns);
+            Assert.AreEqual(2, basicChar.GetEffectByName("temp").RemainingTurns);
             Assert.AreEqual(null, basicChar.GetEffectByName("temp2"));
-            Assert.AreEqual(-1, basicChar.GetEffectByName("permanent").remainingTurns);
+            Assert.AreEqual(-1, basicChar.GetEffectByName("permanent").RemainingTurns);
         }
 
         [TestMethod]

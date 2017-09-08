@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Azure_Scrolls_of_Martial_Prowess.Models;
+using Azure_Scrolls_of_Martial_Prowess.Util;
 
 namespace Azure_Scrolls_of_Martial_Prowess.Controllers
 {
@@ -13,14 +14,22 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
         public Combat currentCombat { get; set; }
         public SortedList<int, String> initiativeList { get; set; }
         public Character currentFocus { get; set; }
+        private MainScreen mainScreen;
 
         public CombatController()
         {
             this.currentCombat = new Combat();
             this.initiativeList = new SortedList<int, string>(new DescendingOrderComperator());
             this.currentFocus = null;
+            this.mainScreen = null;
         }
 
+        public void RegisterMainScreen(MainScreen toRegister)
+        {
+            this.mainScreen = toRegister;
+        }
+
+        #region Data Insertion
         public Boolean AddCharacter(Character newParticipant)
         {
             Boolean res = false;
@@ -28,19 +37,76 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             if (res)
             {
                 initiativeList.Add(newParticipant.CurrentInitiative, newParticipant.Name);
+                if (mainScreen != null)
+                {
+                    mainScreen.RedrawCombatTable();
+                }
             }
             return res;
         }
 
+        public Boolean AddEffectToFocus(Effect effectToAdd)
+        {
+            Boolean res = false;
+            if (currentFocus != null)
+            {
+                try
+                {
+                    currentFocus.CurrentEffects.Add(effectToAdd);
+                    res = true;
+                    if (mainScreen != null)
+                    {
+                        mainScreen.RedrawFocus();
+                    }
+                }
+                catch (Exception e)
+                {
+                    //Res is already default set to false, but set it again in case exception is triggered in Redraw
+                    res = false;
+                }
+            }
+            return res;
+            
+        }
+
+        public void UpdateFocus(Character newFocus)
+        {
+            currentFocus = newFocus;
+            if (mainScreen != null)
+            {
+                mainScreen.RedrawFocus();
+            }
+        }
+
+        #endregion Data Insertion
+
+        #region Data Access
+        public Character GetCharacter(String name)
+        {
+            return this.currentCombat.GetCharacter(name);
+        }
+        #endregion Data Access
+
+        #region Update Logic
         public void NextRound()
         {
             //Resolve continious effects
             UpdateContinuousEffects();
             //Add end of round motes
             AddMotes();
+            //Reset acted
+            ResetActed();
             //Update initiative
             UpdateInitiative();
             //Remove dead characters
+            RemoveDeadCharacters();
+
+            //update view
+            if (mainScreen != null)
+            {
+                mainScreen.RedrawCombatTable();
+                mainScreen.RedrawFocus();
+            }
         }
 
         public void ResetActed()
@@ -106,10 +172,10 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             List<Effect> toRemove = new List<Effect>();
             foreach (Effect effect in toUpdate.CurrentEffects)
             {
-                if (effect.temporary)
+                if (effect.Temporary)
                 {
-                    effect.remainingTurns--;
-                    if (effect.remainingTurns <= 0)
+                    effect.RemainingTurns--;
+                    if (effect.RemainingTurns <= 0)
                     {
                         toRemove.Add(effect);
                     }
@@ -130,21 +196,32 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
                 initiativeList.Add(charPres.CurrentInitiative, charPres.Name);
             }
 
-
         }
 
         private void UpdateInitiative(Character toUpdate)
         {
             int position = initiativeList.IndexOfValue(toUpdate.Name);
-            if (position > 0)
+            if (position >= 0)
             {
                 initiativeList.RemoveAt(position);
                 initiativeList.Add(toUpdate.CurrentInitiative, toUpdate.Name);
             }
-            
-            
+        }
 
-            
+        private void RemoveDeadCharacters()
+        {
+            List<Character> toRemove = new List<Character>();
+            foreach (Character charPres in currentCombat.Participants)
+            {
+                if (charPres.IsOut())
+                {
+                    toRemove.Add(charPres);
+                }
+            }
+            foreach(Character outChar in toRemove)
+            {
+                currentCombat.Participants.Remove(outChar);
+            }
         }
 
         //Quick descending order comperator
@@ -158,38 +235,6 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
                 return 0;
 
             }
-        }
-
-        public void handle_init_list_update(object sender, System.EventArgs e)
-        {
-            //only init or has acted can be updated here
-            int rowIndex = ((DataGridViewCellEventArgs)e).RowIndex;
-            DataGridViewRow row = ((DataGridView)sender).Rows[rowIndex];
-
-            //Retrieve data from event
-            String name = (String)row.Cells[1].Value;
-            Boolean needToParse = !(row.Cells[0].Value is int);
-            int rowInit = 0;
-            if (!needToParse) rowInit = (int) row.Cells[0].Value;
-            Boolean parseSuccesful = needToParse ? int.TryParse((string) row.Cells[0].Value, out rowInit):true;
-            if (parseSuccesful && row.Cells[3].Value != null)
-            {
-                bool rowHasActed = (Boolean)row.Cells[3].Value;
-                Character toUpdate = currentCombat.GetCharacter(name);
-                //Update init
-                if (rowInit != toUpdate.CurrentInitiative)
-                {
-                    toUpdate.CurrentInitiative = rowInit;
-                    UpdateInitiative();
-                }
-                //Update hasActed
-                if (rowHasActed != toUpdate.HasActedThisRound)
-                {
-                    toUpdate.HasActedThisRound = rowHasActed;
-                }
-
-            }
-            
         }
 
         public void UpdateFocusCharacter(Constants.Characteristic code, object newValue)
@@ -213,9 +258,141 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
                     int newWillpower = (int)newValue;
                     currentFocus.CurrentWillPower = newWillpower;
                     break;
+                case Constants.Characteristic.A:
+                    String newAnima = (String)newValue;
+                    currentFocus.CurrentAnimaLevel = newAnima;
+                    break;
+                case Constants.Characteristic.O:
+                    int newOnslaught = (int)newValue;
+                    currentFocus.CurrentOnslaught = newOnslaught;
+                    break;
                 default:
                     break;
             }
+            if (mainScreen != null)
+            {
+                //Let the view update the focus character
+                mainScreen.RedrawFocus();
+                mainScreen.RedrawCombatTable();
+            }
         }
+        #endregion Update Logic
+
+        #region Event Handling
+        public void handle_init_list_update(object sender, System.EventArgs e)
+        {
+            //only init or has acted can be updated here
+            int rowIndex = ((DataGridViewCellEventArgs)e).RowIndex;
+            DataGridViewRow row = ((DataGridView)sender).Rows[rowIndex];
+
+            //Retrieve data from event
+            String name = (String)row.Cells[1].Value;
+            Boolean needToParse = !(row.Cells[0].Value is int);
+            int rowInit = 0;
+            if (!needToParse) rowInit = (int)row.Cells[0].Value;
+            Boolean parseSuccesful = needToParse ? int.TryParse((string)row.Cells[0].Value, out rowInit) : true;
+            if (parseSuccesful && row.Cells[3].Value != null)
+            {
+                bool rowHasActed = (Boolean)row.Cells[3].Value;
+                Character toUpdate = currentCombat.GetCharacter(name);
+                //Update init
+                if (rowInit != toUpdate.CurrentInitiative)
+                {
+                    toUpdate.CurrentInitiative = rowInit;
+                    UpdateInitiative();
+                }
+                //Update hasActed
+                if (rowHasActed != toUpdate.HasActedThisRound)
+                {
+                    toUpdate.HasActedThisRound = rowHasActed;
+                }
+
+            }
+            if(mainScreen != null)
+            {
+                mainScreen.RedrawCombatTable();
+                if (currentFocus != null && name.Equals(currentFocus.Name))
+                {
+                    mainScreen.RedrawFocus();
+                }
+            }
+            
+        }
+        public void handle_focus_health_update(object sender, System.EventArgs e)
+        {
+            
+            //only init or has acted can be updated here
+            int rowIndex = ((DataGridViewCellEventArgs)e).RowIndex;
+            int colIndex = ((DataGridViewCellEventArgs)e).ColumnIndex;
+            DataGridViewRow row = ((DataGridView)sender).Rows[rowIndex];
+
+            //Retrieve data from event
+            String focusName = currentFocus.Name;
+            String newHLValue = (string)row.Cells[colIndex].Value;
+            String hl = currentFocus.CurrentHealthLevels.ElementAt(colIndex).Key;
+            Constants.HealthState oldValue = currentFocus.CurrentHealthLevels.ElementAt(colIndex).Value;
+
+            if (Util.Constants.IsHealthLevelAllowed(newHLValue))
+            {
+                if (Constants.StringToHealthState(newHLValue) != oldValue)
+                {
+                    //Update
+                    KeyValuePair<String, Util.Constants.HealthState> newPair = new KeyValuePair<string, Constants.HealthState>(hl, Constants.StringToHealthState(newHLValue));
+                    currentFocus.CurrentHealthLevels.RemoveAt(colIndex);
+                    currentFocus.CurrentHealthLevels.Insert(colIndex, newPair);
+                }
+
+            }
+            else
+            {
+                //restore old value
+                row.Cells[colIndex].Value = Constants.HealthStateToString(oldValue);
+            }
+
+        } 
+        public void handle_focus_effects_update(object sender, System.EventArgs e)
+        {
+            //only init or has acted can be updated here
+            int rowIndex = ((DataGridViewCellEventArgs)e).RowIndex;
+            DataGridViewRow row = ((DataGridView)sender).Rows[rowIndex];
+
+            //Retrieve data from event
+            String name = (String)row.Cells[0].Value;
+            String description = (String)row.Cells[1].Value;
+            Boolean needToParse = !(row.Cells[2].Value is int);
+            int turnsRemaining = 0;
+            if (!needToParse) turnsRemaining = (int)row.Cells[2].Value;
+            Boolean parseSuccesful = needToParse ? int.TryParse((string)row.Cells[2].Value, out turnsRemaining) : true;
+            if (parseSuccesful)
+            {
+
+                Effect toUpdate = currentFocus.CurrentEffects[rowIndex];
+                //Effect toUpdate = currentFocus.GetEffectByName(name);
+
+                //Name
+                if (name != toUpdate.Name)
+                {
+                    toUpdate.Name = name;
+                    
+                }
+                //Description
+                if (description != toUpdate.Description)
+                {
+                    toUpdate.Description = description;
+                }
+                //Turns Remaining
+                if(toUpdate.Temporary && turnsRemaining != toUpdate.RemainingTurns)
+                {
+                    toUpdate.RemainingTurns = turnsRemaining;
+                }
+
+            }
+            if (mainScreen != null)
+            {
+                //Let the view update the focus character
+                mainScreen.RedrawFocus();
+            }
+        }
+        #endregion Event Handling
     }
 }

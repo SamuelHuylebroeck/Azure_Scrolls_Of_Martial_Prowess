@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CombatScreen = new System.Windows.Forms.GroupBox();
             this.CombatTablePanel = new System.Windows.Forms.Panel();
             this.dataGridView_CombatTable = new System.Windows.Forms.DataGridView();
@@ -44,39 +45,50 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CharacterFocus = new System.Windows.Forms.GroupBox();
+            this.label_Onslaught = new System.Windows.Forms.Label();
+            this.numericUpDown_Focus_Onslaught = new System.Windows.Forms.NumericUpDown();
             this.comboBox_Focus_Anima = new System.Windows.Forms.ComboBox();
             this.Button_Refresh_Character = new System.Windows.Forms.Button();
             this.HealthLevels = new System.Windows.Forms.GroupBox();
-            this.Table_HealthLevels = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridView_Focus_HealthLevels = new System.Windows.Forms.DataGridView();
             this.Effects = new System.Windows.Forms.GroupBox();
             this.EffectsTablePanel = new System.Windows.Forms.Panel();
+            this.dataGridView_Focus_Effects = new System.Windows.Forms.DataGridView();
+            this.EffectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EffectDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EffectTurnsRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Button_AddEffect = new System.Windows.Forms.Button();
             this.Label_PersonalEssence = new System.Windows.Forms.Label();
             this.Label_PeripheralEssence = new System.Windows.Forms.Label();
             this.Label_Willpower = new System.Windows.Forms.Label();
             this.Label_Anima = new System.Windows.Forms.Label();
-            this.upDown_Focus_PersonalEssence = new System.Windows.Forms.NumericUpDown();
-            this.upDown_Focus_PeripheralEssence = new System.Windows.Forms.NumericUpDown();
-            this.upDown_Focus_Willpower = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Focus_PersonalEssence = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Focus_PeripheralEssence = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Focus_Willpower = new System.Windows.Forms.NumericUpDown();
             this.Label_Initiative = new System.Windows.Forms.Label();
-            this.upDown_Focus_Initiative = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Focus_Initiative = new System.Windows.Forms.NumericUpDown();
             this.textBox_name = new System.Windows.Forms.TextBox();
             this.Type = new System.Windows.Forms.TextBox();
             this.Portrait = new System.Windows.Forms.PictureBox();
             this.Button_NextRound = new System.Windows.Forms.Button();
             this.Button_AddCharacter = new System.Windows.Forms.Button();
             this.Button_Refresh = new System.Windows.Forms.Button();
+            this.checkBox_Focus_KeepOnslaught = new System.Windows.Forms.CheckBox();
             this.CombatScreen.SuspendLayout();
             this.CombatTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).BeginInit();
             this.MainMenu.SuspendLayout();
             this.CharacterFocus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Onslaught)).BeginInit();
             this.HealthLevels.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Focus_HealthLevels)).BeginInit();
             this.Effects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_PersonalEssence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_PeripheralEssence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_Willpower)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_Initiative)).BeginInit();
+            this.EffectsTablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Focus_Effects)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_PersonalEssence)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_PeripheralEssence)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Willpower)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Initiative)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,17 +114,22 @@
             // 
             // dataGridView_CombatTable
             // 
+            this.dataGridView_CombatTable.AllowUserToAddRows = false;
+            this.dataGridView_CombatTable.AllowUserToDeleteRows = false;
             this.dataGridView_CombatTable.AllowUserToResizeColumns = false;
             this.dataGridView_CombatTable.AllowUserToResizeRows = false;
+            this.dataGridView_CombatTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView_CombatTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dataGridView_CombatTable.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView_CombatTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_CombatTable.ColumnHeadersHeight = 25;
             this.dataGridView_CombatTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView_CombatTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -120,22 +137,27 @@
             this.ParticipantName,
             this.ParticipantDetails,
             this.HasActedColumn});
-            this.dataGridView_CombatTable.Location = new System.Drawing.Point(4, 3);
+            this.dataGridView_CombatTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_CombatTable.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dataGridView_CombatTable.Location = new System.Drawing.Point(0, 0);
             this.dataGridView_CombatTable.Name = "dataGridView_CombatTable";
             this.dataGridView_CombatTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_CombatTable.RowHeadersVisible = false;
             this.dataGridView_CombatTable.RowHeadersWidth = 40;
             this.dataGridView_CombatTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_CombatTable.RowTemplate.Height = 25;
-            this.dataGridView_CombatTable.Size = new System.Drawing.Size(357, 412);
+            this.dataGridView_CombatTable.Size = new System.Drawing.Size(364, 418);
             this.dataGridView_CombatTable.TabIndex = 1;
             // 
             // InitiativeColumn
@@ -208,6 +230,9 @@
             // 
             // CharacterFocus
             // 
+            this.CharacterFocus.Controls.Add(this.checkBox_Focus_KeepOnslaught);
+            this.CharacterFocus.Controls.Add(this.label_Onslaught);
+            this.CharacterFocus.Controls.Add(this.numericUpDown_Focus_Onslaught);
             this.CharacterFocus.Controls.Add(this.comboBox_Focus_Anima);
             this.CharacterFocus.Controls.Add(this.Button_Refresh_Character);
             this.CharacterFocus.Controls.Add(this.HealthLevels);
@@ -216,20 +241,36 @@
             this.CharacterFocus.Controls.Add(this.Label_PeripheralEssence);
             this.CharacterFocus.Controls.Add(this.Label_Willpower);
             this.CharacterFocus.Controls.Add(this.Label_Anima);
-            this.CharacterFocus.Controls.Add(this.upDown_Focus_PersonalEssence);
-            this.CharacterFocus.Controls.Add(this.upDown_Focus_PeripheralEssence);
-            this.CharacterFocus.Controls.Add(this.upDown_Focus_Willpower);
+            this.CharacterFocus.Controls.Add(this.numericUpDown_Focus_PersonalEssence);
+            this.CharacterFocus.Controls.Add(this.numericUpDown_Focus_PeripheralEssence);
+            this.CharacterFocus.Controls.Add(this.numericUpDown_Focus_Willpower);
             this.CharacterFocus.Controls.Add(this.Label_Initiative);
-            this.CharacterFocus.Controls.Add(this.upDown_Focus_Initiative);
+            this.CharacterFocus.Controls.Add(this.numericUpDown_Focus_Initiative);
             this.CharacterFocus.Controls.Add(this.textBox_name);
             this.CharacterFocus.Controls.Add(this.Type);
             this.CharacterFocus.Controls.Add(this.Portrait);
             this.CharacterFocus.Location = new System.Drawing.Point(382, 25);
             this.CharacterFocus.Name = "CharacterFocus";
-            this.CharacterFocus.Size = new System.Drawing.Size(318, 548);
+            this.CharacterFocus.Size = new System.Drawing.Size(376, 621);
             this.CharacterFocus.TabIndex = 2;
             this.CharacterFocus.TabStop = false;
             this.CharacterFocus.Text = "Focus";
+            // 
+            // label_Onslaught
+            // 
+            this.label_Onslaught.AutoSize = true;
+            this.label_Onslaught.Location = new System.Drawing.Point(19, 114);
+            this.label_Onslaught.Name = "label_Onslaught";
+            this.label_Onslaught.Size = new System.Drawing.Size(55, 13);
+            this.label_Onslaught.TabIndex = 20;
+            this.label_Onslaught.Text = "Onslaught";
+            // 
+            // numericUpDown_Focus_Onslaught
+            // 
+            this.numericUpDown_Focus_Onslaught.Location = new System.Drawing.Point(105, 108);
+            this.numericUpDown_Focus_Onslaught.Name = "numericUpDown_Focus_Onslaught";
+            this.numericUpDown_Focus_Onslaught.Size = new System.Drawing.Size(76, 20);
+            this.numericUpDown_Focus_Onslaught.TabIndex = 19;
             // 
             // comboBox_Focus_Anima
             // 
@@ -248,63 +289,102 @@
             // 
             // Button_Refresh_Character
             // 
-            this.Button_Refresh_Character.Location = new System.Drawing.Point(7, 519);
+            this.Button_Refresh_Character.Location = new System.Drawing.Point(6, 592);
             this.Button_Refresh_Character.Name = "Button_Refresh_Character";
             this.Button_Refresh_Character.Size = new System.Drawing.Size(75, 23);
             this.Button_Refresh_Character.TabIndex = 17;
             this.Button_Refresh_Character.Text = "Refresh Focus";
             this.Button_Refresh_Character.UseVisualStyleBackColor = true;
+            this.Button_Refresh_Character.Click += new System.EventHandler(this.Button_Refresh_Character_Click);
             // 
             // HealthLevels
             // 
-            this.HealthLevels.Controls.Add(this.Table_HealthLevels);
+            this.HealthLevels.Controls.Add(this.dataGridView_Focus_HealthLevels);
             this.HealthLevels.Location = new System.Drawing.Point(6, 246);
             this.HealthLevels.Name = "HealthLevels";
-            this.HealthLevels.Size = new System.Drawing.Size(299, 69);
+            this.HealthLevels.Size = new System.Drawing.Size(299, 94);
             this.HealthLevels.TabIndex = 14;
             this.HealthLevels.TabStop = false;
             this.HealthLevels.Text = "Health Levels";
             // 
-            // Table_HealthLevels
+            // dataGridView_Focus_HealthLevels
             // 
-            this.Table_HealthLevels.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Table_HealthLevels.ColumnCount = 2;
-            this.Table_HealthLevels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.Table_HealthLevels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.Table_HealthLevels.Location = new System.Drawing.Point(10, 19);
-            this.Table_HealthLevels.Name = "Table_HealthLevels";
-            this.Table_HealthLevels.RowCount = 2;
-            this.Table_HealthLevels.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.Table_HealthLevels.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.Table_HealthLevels.Size = new System.Drawing.Size(283, 44);
-            this.Table_HealthLevels.TabIndex = 0;
+            this.dataGridView_Focus_HealthLevels.AllowUserToAddRows = false;
+            this.dataGridView_Focus_HealthLevels.AllowUserToDeleteRows = false;
+            this.dataGridView_Focus_HealthLevels.AllowUserToResizeColumns = false;
+            this.dataGridView_Focus_HealthLevels.AllowUserToResizeRows = false;
+            this.dataGridView_Focus_HealthLevels.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView_Focus_HealthLevels.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView_Focus_HealthLevels.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView_Focus_HealthLevels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Focus_HealthLevels.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_Focus_HealthLevels.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView_Focus_HealthLevels.Name = "dataGridView_Focus_HealthLevels";
+            this.dataGridView_Focus_HealthLevels.RowHeadersVisible = false;
+            this.dataGridView_Focus_HealthLevels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView_Focus_HealthLevels.Size = new System.Drawing.Size(293, 75);
+            this.dataGridView_Focus_HealthLevels.TabIndex = 0;
             // 
             // Effects
             // 
             this.Effects.Controls.Add(this.EffectsTablePanel);
             this.Effects.Controls.Add(this.Button_AddEffect);
-            this.Effects.Location = new System.Drawing.Point(6, 321);
+            this.Effects.Location = new System.Drawing.Point(7, 360);
             this.Effects.Name = "Effects";
-            this.Effects.Size = new System.Drawing.Size(299, 194);
+            this.Effects.Size = new System.Drawing.Size(299, 226);
             this.Effects.TabIndex = 16;
             this.Effects.TabStop = false;
             this.Effects.Text = "Effects";
             // 
             // EffectsTablePanel
             // 
+            this.EffectsTablePanel.Controls.Add(this.dataGridView_Focus_Effects);
             this.EffectsTablePanel.Location = new System.Drawing.Point(6, 19);
             this.EffectsTablePanel.Name = "EffectsTablePanel";
-            this.EffectsTablePanel.Size = new System.Drawing.Size(287, 126);
+            this.EffectsTablePanel.Size = new System.Drawing.Size(287, 172);
             this.EffectsTablePanel.TabIndex = 0;
+            // 
+            // dataGridView_Focus_Effects
+            // 
+            this.dataGridView_Focus_Effects.AllowUserToAddRows = false;
+            this.dataGridView_Focus_Effects.AllowUserToDeleteRows = false;
+            this.dataGridView_Focus_Effects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Focus_Effects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EffectName,
+            this.EffectDescription,
+            this.EffectTurnsRemaining});
+            this.dataGridView_Focus_Effects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_Focus_Effects.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView_Focus_Effects.Name = "dataGridView_Focus_Effects";
+            this.dataGridView_Focus_Effects.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView_Focus_Effects.RowHeadersVisible = false;
+            this.dataGridView_Focus_Effects.Size = new System.Drawing.Size(287, 172);
+            this.dataGridView_Focus_Effects.TabIndex = 0;
+            // 
+            // EffectName
+            // 
+            this.EffectName.HeaderText = "Name";
+            this.EffectName.Name = "EffectName";
+            // 
+            // EffectDescription
+            // 
+            this.EffectDescription.HeaderText = "Description";
+            this.EffectDescription.Name = "EffectDescription";
+            // 
+            // EffectTurnsRemaining
+            // 
+            this.EffectTurnsRemaining.HeaderText = "TR";
+            this.EffectTurnsRemaining.Name = "EffectTurnsRemaining";
             // 
             // Button_AddEffect
             // 
-            this.Button_AddEffect.Location = new System.Drawing.Point(218, 165);
+            this.Button_AddEffect.Location = new System.Drawing.Point(217, 197);
             this.Button_AddEffect.Name = "Button_AddEffect";
             this.Button_AddEffect.Size = new System.Drawing.Size(75, 23);
             this.Button_AddEffect.TabIndex = 15;
             this.Button_AddEffect.Text = "AddEffect";
             this.Button_AddEffect.UseVisualStyleBackColor = true;
+            this.Button_AddEffect.Click += new System.EventHandler(this.Button_AddEffect_Click);
             // 
             // Label_PersonalEssence
             // 
@@ -342,26 +422,26 @@
             this.Label_Anima.TabIndex = 13;
             this.Label_Anima.Text = "Anima";
             // 
-            // upDown_Focus_PersonalEssence
+            // numericUpDown_Focus_PersonalEssence
             // 
-            this.upDown_Focus_PersonalEssence.Location = new System.Drawing.Point(111, 193);
-            this.upDown_Focus_PersonalEssence.Name = "upDown_Focus_PersonalEssence";
-            this.upDown_Focus_PersonalEssence.Size = new System.Drawing.Size(70, 20);
-            this.upDown_Focus_PersonalEssence.TabIndex = 6;
+            this.numericUpDown_Focus_PersonalEssence.Location = new System.Drawing.Point(111, 193);
+            this.numericUpDown_Focus_PersonalEssence.Name = "numericUpDown_Focus_PersonalEssence";
+            this.numericUpDown_Focus_PersonalEssence.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDown_Focus_PersonalEssence.TabIndex = 6;
             // 
-            // upDown_Focus_PeripheralEssence
+            // numericUpDown_Focus_PeripheralEssence
             // 
-            this.upDown_Focus_PeripheralEssence.Location = new System.Drawing.Point(111, 219);
-            this.upDown_Focus_PeripheralEssence.Name = "upDown_Focus_PeripheralEssence";
-            this.upDown_Focus_PeripheralEssence.Size = new System.Drawing.Size(70, 20);
-            this.upDown_Focus_PeripheralEssence.TabIndex = 8;
+            this.numericUpDown_Focus_PeripheralEssence.Location = new System.Drawing.Point(111, 219);
+            this.numericUpDown_Focus_PeripheralEssence.Name = "numericUpDown_Focus_PeripheralEssence";
+            this.numericUpDown_Focus_PeripheralEssence.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDown_Focus_PeripheralEssence.TabIndex = 8;
             // 
-            // upDown_Focus_Willpower
+            // numericUpDown_Focus_Willpower
             // 
-            this.upDown_Focus_Willpower.Location = new System.Drawing.Point(250, 188);
-            this.upDown_Focus_Willpower.Name = "upDown_Focus_Willpower";
-            this.upDown_Focus_Willpower.Size = new System.Drawing.Size(37, 20);
-            this.upDown_Focus_Willpower.TabIndex = 7;
+            this.numericUpDown_Focus_Willpower.Location = new System.Drawing.Point(250, 188);
+            this.numericUpDown_Focus_Willpower.Name = "numericUpDown_Focus_Willpower";
+            this.numericUpDown_Focus_Willpower.Size = new System.Drawing.Size(37, 20);
+            this.numericUpDown_Focus_Willpower.TabIndex = 7;
             // 
             // Label_Initiative
             // 
@@ -372,12 +452,12 @@
             this.Label_Initiative.TabIndex = 5;
             this.Label_Initiative.Text = "Current Initiative";
             // 
-            // upDown_Focus_Initiative
+            // numericUpDown_Focus_Initiative
             // 
-            this.upDown_Focus_Initiative.Location = new System.Drawing.Point(105, 81);
-            this.upDown_Focus_Initiative.Name = "upDown_Focus_Initiative";
-            this.upDown_Focus_Initiative.Size = new System.Drawing.Size(76, 20);
-            this.upDown_Focus_Initiative.TabIndex = 4;
+            this.numericUpDown_Focus_Initiative.Location = new System.Drawing.Point(105, 81);
+            this.numericUpDown_Focus_Initiative.Name = "numericUpDown_Focus_Initiative";
+            this.numericUpDown_Focus_Initiative.Size = new System.Drawing.Size(76, 20);
+            this.numericUpDown_Focus_Initiative.TabIndex = 4;
             // 
             // textBox_name
             // 
@@ -396,7 +476,7 @@
             // Portrait
             // 
             this.Portrait.BackColor = System.Drawing.SystemColors.Window;
-            this.Portrait.Location = new System.Drawing.Point(187, 19);
+            this.Portrait.Location = new System.Drawing.Point(260, 19);
             this.Portrait.Name = "Portrait";
             this.Portrait.Size = new System.Drawing.Size(100, 116);
             this.Portrait.TabIndex = 0;
@@ -432,11 +512,22 @@
             this.Button_Refresh.UseVisualStyleBackColor = true;
             this.Button_Refresh.Click += new System.EventHandler(this.Button_Refresh_Click);
             // 
+            // checkBox_Focus_KeepOnslaught
+            // 
+            this.checkBox_Focus_KeepOnslaught.AutoSize = true;
+            this.checkBox_Focus_KeepOnslaught.Location = new System.Drawing.Point(188, 110);
+            this.checkBox_Focus_KeepOnslaught.Name = "checkBox_Focus_KeepOnslaught";
+            this.checkBox_Focus_KeepOnslaught.Size = new System.Drawing.Size(102, 17);
+            this.checkBox_Focus_KeepOnslaught.TabIndex = 21;
+            this.checkBox_Focus_KeepOnslaught.Text = "Keep Onslaught";
+            this.checkBox_Focus_KeepOnslaught.UseVisualStyleBackColor = true;
+            this.checkBox_Focus_KeepOnslaught.CheckedChanged += new System.EventHandler(this.checkBox_Focus_KeepOnslaught_CheckedChanged);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 585);
+            this.ClientSize = new System.Drawing.Size(828, 658);
             this.Controls.Add(this.Button_Refresh);
             this.Controls.Add(this.Button_AddCharacter);
             this.Controls.Add(this.Button_NextRound);
@@ -453,12 +544,16 @@
             this.MainMenu.PerformLayout();
             this.CharacterFocus.ResumeLayout(false);
             this.CharacterFocus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Onslaught)).EndInit();
             this.HealthLevels.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Focus_HealthLevels)).EndInit();
             this.Effects.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_PersonalEssence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_PeripheralEssence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_Willpower)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upDown_Focus_Initiative)).EndInit();
+            this.EffectsTablePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Focus_Effects)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_PersonalEssence)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_PeripheralEssence)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Willpower)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Initiative)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -477,12 +572,12 @@
         private System.Windows.Forms.GroupBox CharacterFocus;
         private System.Windows.Forms.PictureBox Portrait;
         private System.Windows.Forms.Label Label_Initiative;
-        private System.Windows.Forms.NumericUpDown upDown_Focus_Initiative;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Focus_Initiative;
         private System.Windows.Forms.TextBox Type;
         private System.Windows.Forms.TextBox textBox_name;
-        private System.Windows.Forms.NumericUpDown upDown_Focus_PeripheralEssence;
-        private System.Windows.Forms.NumericUpDown upDown_Focus_Willpower;
-        private System.Windows.Forms.NumericUpDown upDown_Focus_PersonalEssence;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Focus_PeripheralEssence;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Focus_Willpower;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Focus_PersonalEssence;
         private System.Windows.Forms.GroupBox Effects;
         private System.Windows.Forms.Button Button_AddEffect;
         private System.Windows.Forms.Label Label_Anima;
@@ -492,7 +587,6 @@
         private System.Windows.Forms.GroupBox HealthLevels;
         private System.Windows.Forms.Button Button_NextRound;
         private System.Windows.Forms.Button Button_AddCharacter;
-        private System.Windows.Forms.TableLayoutPanel Table_HealthLevels;
         private System.Windows.Forms.Panel EffectsTablePanel;
         private System.Windows.Forms.Panel CombatTablePanel;
         private System.Windows.Forms.DataGridView dataGridView_CombatTable;
@@ -503,5 +597,13 @@
         private System.Windows.Forms.Button Button_Refresh_Character;
         private System.Windows.Forms.Button Button_Refresh;
         private System.Windows.Forms.ComboBox comboBox_Focus_Anima;
+        private System.Windows.Forms.DataGridView dataGridView_Focus_HealthLevels;
+        private System.Windows.Forms.DataGridView dataGridView_Focus_Effects;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EffectTurnsRemaining;
+        private System.Windows.Forms.Label label_Onslaught;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Focus_Onslaught;
+        private System.Windows.Forms.CheckBox checkBox_Focus_KeepOnslaught;
     }
 }
