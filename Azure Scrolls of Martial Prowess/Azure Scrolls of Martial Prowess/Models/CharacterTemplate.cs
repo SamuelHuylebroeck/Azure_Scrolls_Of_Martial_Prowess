@@ -16,7 +16,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
             this.PeripheralEssence = PeripheralEssence;
             this.PersonalEssence = PersonalEssence;
             this.HealthLevels = HealthLevels;
-            this.Battlegroup = false;
+            this.Battlegroup = Battlegroup;
             this.Essence = essence;
         }
 

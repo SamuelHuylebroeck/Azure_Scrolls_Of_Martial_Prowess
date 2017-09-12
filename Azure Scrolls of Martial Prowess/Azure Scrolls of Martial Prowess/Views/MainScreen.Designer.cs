@@ -28,16 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CombatScreen = new System.Windows.Forms.GroupBox();
             this.CombatTablePanel = new System.Windows.Forms.Panel();
             this.dataGridView_CombatTable = new System.Windows.Forms.DataGridView();
-            this.InitiativeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +70,10 @@
             this.Button_NextRound = new System.Windows.Forms.Button();
             this.Button_AddCharacter = new System.Windows.Forms.Button();
             this.Button_Refresh = new System.Windows.Forms.Button();
+            this.InitiativeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CombatScreen.SuspendLayout();
             this.CombatTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).BeginInit();
@@ -123,14 +123,14 @@
             this.dataGridView_CombatTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dataGridView_CombatTable.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView_CombatTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView_CombatTable.ColumnHeadersHeight = 25;
             this.dataGridView_CombatTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView_CombatTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -143,50 +143,23 @@
             this.dataGridView_CombatTable.Location = new System.Drawing.Point(0, 0);
             this.dataGridView_CombatTable.Name = "dataGridView_CombatTable";
             this.dataGridView_CombatTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView_CombatTable.RowHeadersVisible = false;
             this.dataGridView_CombatTable.RowHeadersWidth = 40;
             this.dataGridView_CombatTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CombatTable.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CombatTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView_CombatTable.RowTemplate.Height = 25;
             this.dataGridView_CombatTable.Size = new System.Drawing.Size(600, 573);
             this.dataGridView_CombatTable.TabIndex = 1;
-            // 
-            // InitiativeColumn
-            // 
-            this.InitiativeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.InitiativeColumn.HeaderText = "Initiative";
-            this.InitiativeColumn.Name = "InitiativeColumn";
-            this.InitiativeColumn.Width = 71;
-            // 
-            // ParticipantName
-            // 
-            this.ParticipantName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ParticipantName.HeaderText = "Name";
-            this.ParticipantName.Name = "ParticipantName";
-            this.ParticipantName.Width = 60;
-            // 
-            // ParticipantDetails
-            // 
-            this.ParticipantDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ParticipantDetails.HeaderText = "Details";
-            this.ParticipantDetails.Name = "ParticipantDetails";
-            // 
-            // HasActedColumn
-            // 
-            this.HasActedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.HasActedColumn.HeaderText = "Acted?";
-            this.HasActedColumn.Name = "HasActedColumn";
-            this.HasActedColumn.Width = 47;
             // 
             // MainMenu
             // 
@@ -288,7 +261,6 @@
             this.numericUpDown_Focus_Onslaught.Size = new System.Drawing.Size(76, 20);
             this.numericUpDown_Focus_Onslaught.TabIndex = 19;
             this.numericUpDown_Focus_Onslaught.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown_Focus_Onslaught.ValueChanged += new System.EventHandler(this.numericUpDown_Focus_Onslaught_ValueChanged);
             // 
             // comboBox_Focus_Anima
             // 
@@ -539,6 +511,36 @@
             this.Button_Refresh.Text = "Refresh";
             this.Button_Refresh.UseVisualStyleBackColor = true;
             this.Button_Refresh.Click += new System.EventHandler(this.Button_Refresh_Click);
+            // 
+            // InitiativeColumn
+            // 
+            this.InitiativeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.InitiativeColumn.Frozen = true;
+            this.InitiativeColumn.HeaderText = "Initiative";
+            this.InitiativeColumn.Name = "InitiativeColumn";
+            this.InitiativeColumn.Width = 71;
+            // 
+            // ParticipantName
+            // 
+            this.ParticipantName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ParticipantName.Frozen = true;
+            this.ParticipantName.HeaderText = "Name";
+            this.ParticipantName.Name = "ParticipantName";
+            this.ParticipantName.Width = 60;
+            // 
+            // ParticipantDetails
+            // 
+            this.ParticipantDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ParticipantDetails.HeaderText = "Details";
+            this.ParticipantDetails.Name = "ParticipantDetails";
+            this.ParticipantDetails.ReadOnly = true;
+            // 
+            // HasActedColumn
+            // 
+            this.HasActedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.HasActedColumn.HeaderText = "Acted?";
+            this.HasActedColumn.Name = "HasActedColumn";
+            this.HasActedColumn.Width = 47;
             // 
             // MainScreen
             // 

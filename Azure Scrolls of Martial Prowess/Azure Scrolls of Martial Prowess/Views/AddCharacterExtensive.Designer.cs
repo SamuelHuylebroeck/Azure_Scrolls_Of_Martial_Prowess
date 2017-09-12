@@ -173,7 +173,7 @@
             this.label_Willpower.TabIndex = 8;
             this.label_Willpower.Text = "Willpower";
             // 
-            // numericUpDown_WillPower
+            // numericUpDown_Willpower
             // 
             this.numericUpDown_Willpower.Location = new System.Drawing.Point(168, 90);
             this.numericUpDown_Willpower.Maximum = new decimal(new int[] {
@@ -181,7 +181,7 @@
             0,
             0,
             0});
-            this.numericUpDown_Willpower.Name = "numericUpDown_WillPower";
+            this.numericUpDown_Willpower.Name = "numericUpDown_Willpower";
             this.numericUpDown_Willpower.Size = new System.Drawing.Size(40, 20);
             this.numericUpDown_Willpower.TabIndex = 9;
             this.numericUpDown_Willpower.Value = new decimal(new int[] {
@@ -323,7 +323,6 @@
             // label_Drill
             // 
             this.label_Drill.AutoSize = true;
-            this.label_Drill.Enabled = false;
             this.label_Drill.Location = new System.Drawing.Point(13, 210);
             this.label_Drill.Name = "label_Drill";
             this.label_Drill.Size = new System.Drawing.Size(24, 13);
@@ -334,7 +333,6 @@
             // label_size
             // 
             this.label_size.AutoSize = true;
-            this.label_size.Enabled = false;
             this.label_size.Location = new System.Drawing.Point(13, 236);
             this.label_size.Name = "label_size";
             this.label_size.Size = new System.Drawing.Size(27, 13);
@@ -397,7 +395,6 @@
             // label_Might
             // 
             this.label_Might.AutoSize = true;
-            this.label_Might.Enabled = false;
             this.label_Might.Location = new System.Drawing.Point(13, 262);
             this.label_Might.Name = "label_Might";
             this.label_Might.Size = new System.Drawing.Size(33, 13);

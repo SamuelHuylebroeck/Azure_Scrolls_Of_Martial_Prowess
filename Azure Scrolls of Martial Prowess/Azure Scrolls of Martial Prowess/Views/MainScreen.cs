@@ -19,7 +19,10 @@ namespace Azure_Scrolls_of_Martial_Prowess
     {
         private CombatController combatController;
         private Dictionary<String, Constants.Characteristic> updateHandlerMapping;
-
+        public Boolean RedrawingFocus { get; set; }
+        public Boolean RedrawingCombatTable { get; set; }
+        public Boolean RedrawingHealthLevels { get; set; }
+        public Boolean RedrawingEffects { get; set; }
         public MainScreen()
         {
             InitializeComponent();
@@ -39,6 +42,9 @@ namespace Azure_Scrolls_of_Martial_Prowess
             numericUpDown_Focus_Onslaught.ValueChanged += new EventHandler(handle_focus_character_update_numericUpDown);
             updateHandlerMapping.Add(numericUpDown_Focus_Onslaught.Name, Constants.Characteristic.O);
 
+            RedrawingFocus = false;
+            RedrawingCombatTable = false;
+
         }
 
 
@@ -46,12 +52,14 @@ namespace Azure_Scrolls_of_Martial_Prowess
         #region RedrawFunctions
         public void RedrawCombatTable()
         {
+            RedrawingCombatTable = true;
             try {
                 dataGridView_CombatTable.Rows.Clear();
                 foreach (KeyValuePair<int, String> initNamePair in combatController.initiativeList)
                 {
                     Character participant = combatController.GetCharacter(initNamePair.Value);
-                    Object[] values = { initNamePair.Key, initNamePair.Value, participant.GetShortDescription(), participant.HasActedThisRound };
+                    String description = participant.Battlegroup ? ((Battlegroup)participant).GetShortDescription() : participant.GetShortDescription();
+                    Object[] values = { initNamePair.Key, initNamePair.Value, description, participant.HasActedThisRound };
                     dataGridView_CombatTable.Rows.Add(values);
                 }
                 dataGridView_CombatTable.CellEndEdit += new DataGridViewCellEventHandler(combatController.handle_init_list_update);
@@ -60,10 +68,12 @@ namespace Azure_Scrolls_of_Martial_Prowess
             {
                 Console.WriteLine("Exception occured while redrawing combat table");
             }
+            RedrawingCombatTable = false;
         }
 
         public void RedrawFocus()
         {
+            RedrawingFocus = true;
             Character currentFocus = combatController.currentFocus;
             //Fields
             if (currentFocus != null)
@@ -82,11 +92,13 @@ namespace Azure_Scrolls_of_Martial_Prowess
                 //Effects
                 RedrawEffects();
             }
+            RedrawingFocus = false;
 
         }
 
-        private void RedrawHealthLevels()
+        public void RedrawHealthLevels()
         {
+            RedrawingHealthLevels = true;
             Character currentFocus = combatController.currentFocus;
             //Adjust table
             int nrOfColumns = currentFocus.CurrentHealthLevels.Count;
@@ -115,15 +127,17 @@ namespace Azure_Scrolls_of_Martial_Prowess
                 dataGridView_Focus_HealthLevels.Columns.Add("MaxSize", "Max Size");
                 //Current size and magnitude
                 Battlegroup bg = (Battlegroup)currentFocus;
-                int[] values = { bg.CurrentMagnitude, bg.GetCurrentMaxMagnitude(), bg.CurrentSize, bg.Size, bg.CurrentMagnitude };
+                String[] values = { ""+ bg.CurrentMagnitude, "" + bg.GetCurrentMaxMagnitude(), "" + bg.CurrentSize,""+ bg.Size};
                 dataGridView_Focus_HealthLevels.Rows.Add(values);
             }
 
             dataGridView_Focus_HealthLevels.CellEndEdit += new DataGridViewCellEventHandler(combatController.handle_focus_health_update);
+            RedrawingHealthLevels = false;
         }
 
-        private void RedrawEffects()
+        public void RedrawEffects()
         {
+            RedrawingEffects = true;
             Character currentFocus = combatController.currentFocus;
             dataGridView_Focus_Effects.Rows.Clear();
 
@@ -138,6 +152,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
                 dataGridView_Focus_Effects.Rows.Add(values);
             }
             dataGridView_Focus_Effects.CellEndEdit += new DataGridViewCellEventHandler(combatController.handle_focus_effects_update);
+            RedrawingEffects = false;
         }
 
         #endregion RedrawFunctions
@@ -158,7 +173,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
 
         public void handle_focus_character_update_numericUpDown(object sender, System.EventArgs e)
         {
-            if (combatController.currentFocus != null)
+            if (combatController.currentFocus != null && !RedrawingFocus)
             {
                 //Code
                 String controlName = ((Control)sender).Name;
@@ -172,7 +187,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
 
         public void handle_focus_character_update_text(object sender, System.EventArgs e)
         {
-            if (combatController.currentFocus != null)
+            if (combatController.currentFocus != null && !RedrawingFocus)
             {
                 //Code
                 String controlName = ((Control)sender).Name;
@@ -187,7 +202,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
 
         public void handle_focus_character_update_comboBox(object sender, System.EventArgs e)
         {
-            if (combatController.currentFocus != null)
+            if (combatController.currentFocus != null && !RedrawingFocus)
             {
                 //Code
                 String controlName = ((Control)sender).Name;
@@ -240,10 +255,6 @@ namespace Azure_Scrolls_of_Martial_Prowess
 
         #endregion EventHandling
 
-        private void numericUpDown_Focus_Onslaught_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

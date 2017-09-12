@@ -37,7 +37,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
             //Drill
             res += "D: " + Drill + ", ";
             //Size
-            res += "S: " + CurrentSize + "/" + Size;
+            res += "S: " + CurrentSize + "/" + Size+", ";
             //Magnitude
             res += "M: " + CurrentMagnitude + "/"+ GetCurrentMaxMagnitude();
             return res;

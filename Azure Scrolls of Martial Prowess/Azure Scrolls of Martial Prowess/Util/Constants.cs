@@ -89,7 +89,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Util
 
         public static Boolean IsWoundedHealthLevel(HealthState hs)
         {
-            return hs.Equals(HealthState.BASHING) || ALLOWED_HL_STRINGS.Equals(HealthState.LETHAL);
+            return hs.Equals(HealthState.BASHING) || hs.Equals(HealthState.LETHAL);
 
         }
     }

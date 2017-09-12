@@ -90,6 +90,8 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
         #region Update Logic
         public void NextRound()
         {
+            //Remove dead characters
+            RemoveDeadCharacters();
             //Resolve continious effects
             UpdateContinuousEffects();
             //Add end of round motes
@@ -98,8 +100,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             ResetActed();
             //Update initiative
             UpdateInitiative();
-            //Remove dead characters
-            RemoveDeadCharacters();
+
 
             //update view
             if (mainScreen != null)
@@ -213,14 +214,25 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             List<Character> toRemove = new List<Character>();
             foreach (Character charPres in currentCombat.Participants)
             {
-                if (charPres.IsOut())
+                if (!charPres.Battlegroup)
                 {
-                    toRemove.Add(charPres);
+                    if (charPres.IsOut())
+                    {
+                        toRemove.Add(charPres);
+                    }
+                }
+                else
+                {
+                    if (((Battlegroup)charPres).IsOut())
+                    {
+                        toRemove.Add(charPres);
+                    }
                 }
             }
             foreach(Character outChar in toRemove)
             {
                 currentCombat.Participants.Remove(outChar);
+                
             }
         }
 
@@ -233,7 +245,6 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
                 if (x < y) return 1;
                 if (x > y) return -1;
                 return 0;
-
             }
         }
 
@@ -269,11 +280,11 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
                 default:
                     break;
             }
-            if (mainScreen != null)
+            if (mainScreen != null )
             {
                 //Let the view update the focus character
-                mainScreen.RedrawFocus();
-                mainScreen.RedrawCombatTable();
+                if(!mainScreen.RedrawingFocus) mainScreen.RedrawFocus();
+                if(!mainScreen.RedrawingCombatTable) mainScreen.RedrawCombatTable();
             }
         }
         #endregion Update Logic
@@ -310,10 +321,10 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             }
             if(mainScreen != null)
             {
-                mainScreen.RedrawCombatTable();
+                if (!mainScreen.RedrawingCombatTable) mainScreen.RedrawCombatTable();
                 if (currentFocus != null && name.Equals(currentFocus.Name))
                 {
-                    mainScreen.RedrawFocus();
+                    if (!mainScreen.RedrawingFocus) mainScreen.RedrawFocus();
                 }
             }
             
@@ -334,6 +345,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             {
                 HandleHealthUpdateBattleGroup(rowIndex, colIndex, row);
             }
+            if (mainScreen != null && !mainScreen.RedrawingHealthLevels) mainScreen.RedrawHealthLevels();
 
         }
         
@@ -378,7 +390,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
                 Boolean needToParseSize = !(row.Cells[2].Value is int);
                 int rowSize = 0;
                 if (!needToParseSize) rowSize = (int)row.Cells[2].Value;
-                parseSuccesful = parseSuccesful && (needToParseSize ? int.TryParse((string)row.Cells[0].Value, out rowSize) : true);
+                parseSuccesful = parseSuccesful && (needToParseSize ? int.TryParse((string)row.Cells[2].Value, out rowSize) : true);
                 if (parseSuccesful)
                 {
                     //Change values, size first
@@ -415,6 +427,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
         }
         public void handle_focus_effects_update(object sender, System.EventArgs e)
         {
+            
             //only init or has acted can be updated here
             int rowIndex = ((DataGridViewCellEventArgs)e).RowIndex;
             DataGridViewRow row = ((DataGridView)sender).Rows[rowIndex];
@@ -453,7 +466,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             if (mainScreen != null)
             {
                 //Let the view update the focus character
-                mainScreen.RedrawFocus();
+                if(!mainScreen.RedrawingFocus) mainScreen.RedrawFocus();
             }
         }
         #endregion Event Handling
