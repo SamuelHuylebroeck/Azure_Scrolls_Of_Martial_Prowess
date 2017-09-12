@@ -46,16 +46,20 @@ namespace Azure_Scrolls_of_Martial_Prowess
         #region RedrawFunctions
         public void RedrawCombatTable()
         {
-            dataGridView_CombatTable.Rows.Clear();
-            foreach (KeyValuePair<int, String> initNamePair in combatController.initiativeList)
+            try {
+                dataGridView_CombatTable.Rows.Clear();
+                foreach (KeyValuePair<int, String> initNamePair in combatController.initiativeList)
+                {
+                    Character participant = combatController.GetCharacter(initNamePair.Value);
+                    Object[] values = { initNamePair.Key, initNamePair.Value, participant.GetShortDescription(), participant.HasActedThisRound };
+                    dataGridView_CombatTable.Rows.Add(values);
+                }
+                dataGridView_CombatTable.CellEndEdit += new DataGridViewCellEventHandler(combatController.handle_init_list_update);
+                dataGridView_CombatTable.CellDoubleClick += new DataGridViewCellEventHandler(handle_new_focus);
+            }catch(Exception e)
             {
-                Character participant = combatController.GetCharacter(initNamePair.Value);
-                Object[] values = { initNamePair.Key, initNamePair.Value, participant.GetShortDescription(), participant.HasActedThisRound };
-                dataGridView_CombatTable.Rows.Add(values);
+                Console.WriteLine("Exception occured while redrawing combat table");
             }
-            dataGridView_CombatTable.CellEndEdit += new DataGridViewCellEventHandler(combatController.handle_init_list_update);
-            dataGridView_CombatTable.CellDoubleClick += new DataGridViewCellEventHandler(handle_new_focus);
-
         }
 
         public void RedrawFocus()
@@ -207,7 +211,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
 
         private void Button_AddCharacter_Click(object sender, EventArgs e)
         {
-            Form toAdd = new AddCharacterQuick(combatController);
+            Form toAdd = new AddCharacterExtensive(combatController);
             toAdd.Show();
         }
 

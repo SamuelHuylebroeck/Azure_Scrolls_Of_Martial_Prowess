@@ -9,7 +9,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
 {
     public class CharacterTemplate
     {
-        public CharacterTemplate(String Type, int Willpower, int PeripheralEssence,int PersonalEssence, List<String> HealthLevels, Boolean Battlegroup)
+        public CharacterTemplate(String Type,int essence, int Willpower, int PeripheralEssence,int PersonalEssence, List<String> HealthLevels, Boolean Battlegroup)
         {
             this.Type = Type;
             this.Willpower = Willpower;
@@ -17,9 +17,10 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
             this.PersonalEssence = PersonalEssence;
             this.HealthLevels = HealthLevels;
             this.Battlegroup = false;
+            this.Essence = essence;
         }
 
-        public CharacterTemplate(String Type, int Willpower, int PeripheralEssence,int PersonalEssence): this(Type, Willpower, PeripheralEssence, PersonalEssence, null, false)
+        public CharacterTemplate(String Type, int Willpower, int PeripheralEssence,int PersonalEssence): this(Type, 1,Willpower, PeripheralEssence, PersonalEssence, null, false)
         {
             List<String> hl = new List<String>();
             String[] levels = { "0", "-1", "-1", "-2", "-2", "-4", Constants.HL_INC };
@@ -32,6 +33,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
 
         public String Type { get;  }
         public int Willpower { get;  }
+        public int Essence { get; }
         public int PeripheralEssence { get;  }
         public int PersonalEssence { get;  }
         public List<String> HealthLevels { get;  }

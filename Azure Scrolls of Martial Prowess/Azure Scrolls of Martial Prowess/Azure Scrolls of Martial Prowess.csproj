@@ -55,14 +55,22 @@
     <Compile Include="Models\Battlegroup.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\CharacterTemplate.cs" />
+    <Compile Include="Models\Factories\ExtensiveCharacterFactory.cs" />
+    <Compile Include="Models\Factories\ICharacterFactory.cs" />
     <Compile Include="Util\Constants.cs" />
     <Compile Include="Models\Combat.cs" />
     <Compile Include="Models\Effect.cs" />
-    <Compile Include="Views\AddCharacter.cs">
+    <Compile Include="Views\AddCharacterExtensive.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\AddCharacter.Designer.cs">
-      <DependentUpon>AddCharacter.cs</DependentUpon>
+    <Compile Include="Views\AddCharacterExtensive.Designer.cs">
+      <DependentUpon>AddCharacterExtensive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddCharacterQuick.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddCharacterQuick.Designer.cs">
+      <DependentUpon>AddCharacterQuick.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\AddEffect.cs">
       <SubType>Form</SubType>
@@ -78,8 +86,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Views\AddCharacter.resx">
-      <DependentUpon>AddCharacter.cs</DependentUpon>
+    <EmbeddedResource Include="Views\AddCharacterExtensive.resx">
+      <DependentUpon>AddCharacterExtensive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddCharacterQuick.resx">
+      <DependentUpon>AddCharacterQuick.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddEffect.resx">
       <DependentUpon>AddEffect.cs</DependentUpon>
