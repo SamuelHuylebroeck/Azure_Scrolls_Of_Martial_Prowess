@@ -12,16 +12,16 @@ using Azure_Scrolls_of_Martial_Prowess.Models;
 
 namespace Azure_Scrolls_of_Martial_Prowess.Views
 {
-    public partial class AddCharacter : Form
+    public partial class AddCharacterQuick : Form
     {
 
         private CombatController combatController;
-        public AddCharacter()
+        public AddCharacterQuick()
         {
             InitializeComponent();
         }
 
-        public AddCharacter(CombatController cc)
+        public AddCharacterQuick(CombatController cc)
         {
             InitializeComponent();
             this.combatController = cc;

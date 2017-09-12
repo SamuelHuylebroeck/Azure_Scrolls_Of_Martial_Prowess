@@ -91,21 +91,30 @@ namespace Azure_Scrolls_of_Martial_Prowess
             dataGridView_Focus_HealthLevels.Columns.Clear();
             List<String> healthValuesAsString = new List<String>();
 
-            //set row width and columnheight
-            foreach (KeyValuePair<String, Constants.HealthState> kvp in currentFocus.CurrentHealthLevels)
-            {
-                dataGridView_Focus_HealthLevels.Columns.Add(kvp.Key, kvp.Key);
-                healthValuesAsString.Add(Constants.HealthStateToString(kvp.Value));
-            }
+
             if (!currentFocus.Battlegroup)
             {
+                //set row width and columnheight
+                foreach (KeyValuePair<String, Constants.HealthState> kvp in currentFocus.CurrentHealthLevels)
+                {
+                    dataGridView_Focus_HealthLevels.Columns.Add(kvp.Key, kvp.Key);
+                    healthValuesAsString.Add(Constants.HealthStateToString(kvp.Value));
+                }
                 dataGridView_Focus_HealthLevels.Rows.Add(healthValuesAsString.ToArray());
             }
             else
             {
+                
+                dataGridView_Focus_HealthLevels.Columns.Add("CurrentMagnitude", "Current Magnitude");
+                dataGridView_Focus_HealthLevels.Columns.Add("MaxMagnitude", "Max Magnitude");
+                dataGridView_Focus_HealthLevels.Columns.Add("CurrentSize", "Current Size");
+                dataGridView_Focus_HealthLevels.Columns.Add("MaxSize", "Max Size");
                 //Current size and magnitude
+                Battlegroup bg = (Battlegroup)currentFocus;
+                int[] values = { bg.CurrentMagnitude, bg.GetCurrentMaxMagnitude(), bg.CurrentSize, bg.Size, bg.CurrentMagnitude };
+                dataGridView_Focus_HealthLevels.Rows.Add(values);
             }
-            
+
             dataGridView_Focus_HealthLevels.CellEndEdit += new DataGridViewCellEventHandler(combatController.handle_focus_health_update);
         }
 
@@ -113,7 +122,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
         {
             Character currentFocus = combatController.currentFocus;
             dataGridView_Focus_Effects.Rows.Clear();
-            
+
             foreach (Effect eff in currentFocus.CurrentEffects)
             {
                 String turnsRemaining = "-1";
@@ -198,7 +207,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
 
         private void Button_AddCharacter_Click(object sender, EventArgs e)
         {
-            Form toAdd = new AddCharacter(combatController);
+            Form toAdd = new AddCharacterQuick(combatController);
             toAdd.Show();
         }
 
@@ -214,11 +223,11 @@ namespace Azure_Scrolls_of_Martial_Prowess
 
         private void checkBox_Focus_KeepOnslaught_CheckedChanged(object sender, EventArgs e)
         {
-            if(combatController.currentFocus != null)
+            if (combatController.currentFocus != null)
             {
                 Boolean fieldValue = ((CheckBox)sender).Checked;
                 Boolean oldValue = combatController.currentFocus.KeepOnslaughtOnAct;
-                if(fieldValue != oldValue)
+                if (fieldValue != oldValue)
                 {
                     combatController.currentFocus.KeepOnslaughtOnAct = fieldValue;
                 }

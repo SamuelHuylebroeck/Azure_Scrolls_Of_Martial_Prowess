@@ -326,6 +326,19 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             int colIndex = ((DataGridViewCellEventArgs)e).ColumnIndex;
             DataGridViewRow row = ((DataGridView)sender).Rows[rowIndex];
 
+            if (!currentFocus.Battlegroup)
+            {
+                HandleHealthUpdateIndividual(rowIndex, colIndex, row);
+            }
+            else
+            {
+                HandleHealthUpdateBattleGroup(rowIndex, colIndex, row);
+            }
+
+        }
+        
+        private void HandleHealthUpdateIndividual (int rowIndex, int colIndex, DataGridViewRow row)
+        {
             //Retrieve data from event
             String focusName = currentFocus.Name;
             String newHLValue = (string)row.Cells[colIndex].Value;
@@ -348,8 +361,58 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
                 //restore old value
                 row.Cells[colIndex].Value = Constants.HealthStateToString(oldValue);
             }
+        }
 
-        } 
+        private void HandleHealthUpdateBattleGroup(int rowIndex, int colIndex, DataGridViewRow row)
+        {
+            Battlegroup bg = (Battlegroup)currentFocus;
+            //Only check current size and magnitude
+            if(colIndex == 0 || colIndex == 2)
+            {
+                //Convert from string
+                Boolean needToParseMag = !(row.Cells[0].Value is int);
+                int rowMagnitude = 0;
+                if (!needToParseMag) rowMagnitude = (int)row.Cells[0].Value;
+                Boolean parseSuccesful = needToParseMag ? int.TryParse((string)row.Cells[0].Value, out rowMagnitude) : true;
+
+                Boolean needToParseSize = !(row.Cells[2].Value is int);
+                int rowSize = 0;
+                if (!needToParseSize) rowSize = (int)row.Cells[2].Value;
+                parseSuccesful = parseSuccesful && (needToParseSize ? int.TryParse((string)row.Cells[0].Value, out rowSize) : true);
+                if (parseSuccesful)
+                {
+                    //Change values, size first
+                    if(rowSize != bg.CurrentSize)
+                    {
+                        bg.CurrentSize = rowSize;
+                    }
+                    if(rowMagnitude != bg.CurrentMagnitude)
+                    {
+                        if(!(rowMagnitude <= 0)){
+                            bg.CurrentMagnitude = rowMagnitude;
+                        }
+                        else
+                        {
+                            //If magnitude drops below 0, drop size and restore mag to new max
+                            bg.CurrentSize--;
+                            if(bg.CurrentSize <= 0)
+                            {
+                                //Set to 0 for cleanup step
+                                bg.CurrentMagnitude = 0;
+                            }
+                            else
+                            {
+                                bg.CurrentMagnitude = bg.GetCurrentMaxMagnitude();
+                            }
+                        }
+                         
+                    }
+                    
+                }
+
+                
+            }
+        }
         public void handle_focus_effects_update(object sender, System.EventArgs e)
         {
             //only init or has acted can be updated here
