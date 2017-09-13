@@ -42,5 +42,12 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
             return res;
 
         }
+
+        public Boolean RemoveCharacter(String name)
+        {
+            Boolean res = false;
+            res = Participants.Remove(GetCharacter(name));
+            return res;
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Azure_Scrolls_of_Martial_Prowess.Models;
 using Azure_Scrolls_of_Martial_Prowess.Util;
+using Azure_Scrolls_of_Martial_Prowess.Views;
 
 namespace Azure_Scrolls_of_Martial_Prowess.Controllers
 {
@@ -84,6 +85,63 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
         public Character GetCharacter(String name)
         {
             return this.currentCombat.GetCharacter(name);
+        }
+
+        /// <summary>
+        /// Removes a character from combat and re-enables new delete windows
+        /// </summary>
+        
+        ///
+        public Boolean DeleteCharacter(String name)
+        {
+
+            Boolean result=  RemoveCharacter(name);
+            if(mainScreen != null)
+            {
+                mainScreen.DeleteWindowOpen = false;
+            }
+            return result;
+        }
+        /// <summary>
+        /// Removes a character from combat, does not re-enable new delete windows
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Boolean RemoveCharacter(String name)
+        {
+            Boolean result = false;
+            result = currentCombat.RemoveCharacter(name);
+            result = result && RemoveFromInitList(name);
+            if (result && mainScreen != null && !mainScreen.RedrawingCombatTable)
+            {
+                mainScreen.RedrawCombatTable();
+                if (currentFocus.Name.Equals(name))
+                {
+                    currentFocus = null;
+                    if (!mainScreen.RedrawingFocus)
+                    {
+                        mainScreen.RedrawFocus();
+                    }
+                }
+            }
+            return result;
+        }
+
+        private Boolean RemoveFromInitList(String name)
+        {
+            Boolean result = false;
+            int toRemovePosition = -1;
+            for(int i =0;i<initiativeList.Count;i++)
+            {
+                KeyValuePair<int, String> kvp = initiativeList.ElementAt(i);
+                if (kvp.Value.Equals(name))
+                {
+                    result = true;
+                    toRemovePosition = i;
+                }
+            }
+            if (result) initiativeList.RemoveAt(toRemovePosition);
+            return result;
         }
         #endregion Data Access
 
@@ -231,7 +289,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             }
             foreach(Character outChar in toRemove)
             {
-                currentCombat.Participants.Remove(outChar);
+                RemoveCharacter(outChar.Name);
                 
             }
         }
@@ -468,6 +526,31 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
                 //Let the view update the focus character
                 if(!mainScreen.RedrawingFocus) mainScreen.RedrawFocus();
             }
+        }
+        public void handle_delete_button_clicked(object sender, System.EventArgs e)
+        {
+            if (mainScreen != null)
+            {
+                
+                int rowIndex = ((DataGridViewCellEventArgs)e).RowIndex;
+                int colIndex = ((DataGridViewCellEventArgs)e).ColumnIndex;
+                if (colIndex == 4)
+                {
+                    DataGridViewRow row = ((DataGridView)sender).Rows[rowIndex];
+
+                    //Retrieve data from event
+                    String name = (String)row.Cells[1].Value;
+                    Character toUpdate = currentCombat.GetCharacter(name); //check if present
+                    if (toUpdate != null && !mainScreen.DeleteWindowOpen)
+                    {
+                        mainScreen.DeleteWindowOpen = true;
+                        DeleteConfirmation delConfirm = new DeleteConfirmation(this, name);
+                        delConfirm.Show();
+
+                    }
+                }
+            }
+
         }
         #endregion Event Handling
     }

@@ -74,6 +74,7 @@
             this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CombatScreen.SuspendLayout();
             this.CombatTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).BeginInit();
@@ -137,7 +138,8 @@
             this.InitiativeColumn,
             this.ParticipantName,
             this.ParticipantDetails,
-            this.HasActedColumn});
+            this.HasActedColumn,
+            this.Delete});
             this.dataGridView_CombatTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_CombatTable.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridView_CombatTable.Location = new System.Drawing.Point(0, 0);
@@ -542,6 +544,13 @@
             this.HasActedColumn.Name = "HasActedColumn";
             this.HasActedColumn.Width = 47;
             // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.Width = 44;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,6 +630,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EffectTurnsRemaining;
         private System.Windows.Forms.DataGridViewTextBoxColumn EffectDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn EffectName;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewCheckBoxColumn HasActedColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;

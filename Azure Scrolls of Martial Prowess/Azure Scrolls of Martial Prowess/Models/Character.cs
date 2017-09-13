@@ -118,5 +118,12 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
             return res;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (!obj.GetType().Equals(this.GetType())) return false;
+            Character toCompare = (Character)obj;
+            if (toCompare.Name.Equals(this.Name)) return true;
+            return base.Equals(obj);
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
         public Boolean RedrawingCombatTable { get; set; }
         public Boolean RedrawingHealthLevels { get; set; }
         public Boolean RedrawingEffects { get; set; }
+        public Boolean DeleteWindowOpen {get; set; }
         public MainScreen()
         {
             InitializeComponent();
@@ -44,6 +45,8 @@ namespace Azure_Scrolls_of_Martial_Prowess
 
             RedrawingFocus = false;
             RedrawingCombatTable = false;
+            RedrawingEffects = false;
+            DeleteWindowOpen = false;
 
         }
 
@@ -64,6 +67,7 @@ namespace Azure_Scrolls_of_Martial_Prowess
                 }
                 dataGridView_CombatTable.CellEndEdit += new DataGridViewCellEventHandler(combatController.handle_init_list_update);
                 dataGridView_CombatTable.CellDoubleClick += new DataGridViewCellEventHandler(handle_new_focus);
+                dataGridView_CombatTable.CellContentClick += new DataGridViewCellEventHandler(combatController.handle_delete_button_clicked);
             }catch(Exception e)
             {
                 Console.WriteLine("Exception occured while redrawing combat table");

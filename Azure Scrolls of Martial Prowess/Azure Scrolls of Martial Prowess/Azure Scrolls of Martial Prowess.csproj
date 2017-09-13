@@ -78,6 +78,12 @@
     <Compile Include="Views\AddEffect.Designer.cs">
       <DependentUpon>AddEffect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\DeleteConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DeleteConfirmation.Designer.cs">
+      <DependentUpon>DeleteConfirmation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddEffect.resx">
       <DependentUpon>AddEffect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DeleteConfirmation.resx">
+      <DependentUpon>DeleteConfirmation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
