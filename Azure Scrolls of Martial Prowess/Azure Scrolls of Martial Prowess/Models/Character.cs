@@ -9,13 +9,13 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
 {
     public class Character : CharacterTemplate
     {
-        public Character(string name, CharacterTemplate template) : base(template.Type, template.Willpower, template.PeripheralEssence, template.PersonalEssence, template.HealthLevels, template.Battlegroup)
+        public Character(string name, CharacterTemplate template) : base(template.Type,template.Essence, template.Willpower, template.PeripheralEssence, template.PersonalEssence, template.HealthLevels, template.Battlegroup)
         {
             this.Name = name;
             this.CurrentInitiative = 0;
             this.CurrentPeripheralEssence = this.PeripheralEssence;
             this.CurrentPersonalEssence = this.PersonalEssence;
-            this.CurrentWillPower = 0;
+            this.CurrentWillPower = this.Willpower;
             this.CurrentOnslaught = 0;
             
             this.CurrentEffects = new List<Effect>();

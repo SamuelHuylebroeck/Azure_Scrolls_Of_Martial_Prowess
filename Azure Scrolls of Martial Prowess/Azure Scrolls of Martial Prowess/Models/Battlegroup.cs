@@ -19,12 +19,35 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
             this.Size = Size;
             this.Drill = Drill;
             this.CurrentSize = Size;
-            this.CurrentMagnitude = HealthLevels.Count + CurrentSize;
+            this.CurrentMagnitude = GetCurrentMaxMagnitude();
            
         }
 
+        public int GetCurrentMaxMagnitude()
+        {
+            return HealthLevels.Count + CurrentSize;
+        }
 
-        
+        public new String GetShortDescription()
+        {
+            String res = "";
+            //onslaught
+            res += "O:-" + CurrentOnslaught + ", ";
+
+            //Drill
+            res += "D: " + Drill + ", ";
+            //Size
+            res += "S: " + CurrentSize + "/" + Size+", ";
+            //Magnitude
+            res += "M: " + CurrentMagnitude + "/"+ GetCurrentMaxMagnitude();
+            return res;
+        }
+
+        public new Boolean IsOut()
+        {
+            return (CurrentMagnitude <= 0 && Size <= 0);
+        }
+
 
     }
 }

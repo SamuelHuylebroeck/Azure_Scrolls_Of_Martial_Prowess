@@ -1,6 +1,6 @@
 ﻿namespace Azure_Scrolls_of_Martial_Prowess.Views
 {
-    partial class AddCharacter
+    partial class AddCharacterQuick
     {
         /// <summary>
         /// Required designer variable.
