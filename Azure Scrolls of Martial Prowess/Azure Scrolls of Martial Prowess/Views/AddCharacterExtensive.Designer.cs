@@ -58,6 +58,7 @@
             this.groupBox_template = new System.Windows.Forms.GroupBox();
             this.label_Might = new System.Windows.Forms.Label();
             this.numericUpDown_Might = new System.Windows.Forms.NumericUpDown();
+            this.radioButton_Spirit = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Essence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Willpower)).BeginInit();
             this.groupBox_Health.SuspendLayout();
@@ -121,7 +122,7 @@
             // 
             this.textBox_Name.Location = new System.Drawing.Point(54, 9);
             this.textBox_Name.Name = "textBox_Name";
-            this.textBox_Name.Size = new System.Drawing.Size(369, 20);
+            this.textBox_Name.Size = new System.Drawing.Size(421, 20);
             this.textBox_Name.TabIndex = 4;
             // 
             // label_Name
@@ -204,7 +205,7 @@
             this.groupBox_Health.Controls.Add(this.label_minus1);
             this.groupBox_Health.Location = new System.Drawing.Point(12, 116);
             this.groupBox_Health.Name = "groupBox_Health";
-            this.groupBox_Health.Size = new System.Drawing.Size(411, 68);
+            this.groupBox_Health.Size = new System.Drawing.Size(463, 68);
             this.groupBox_Health.TabIndex = 10;
             this.groupBox_Health.TabStop = false;
             this.groupBox_Health.Text = "Health levels";
@@ -381,13 +382,14 @@
             // 
             // groupBox_template
             // 
+            this.groupBox_template.Controls.Add(this.radioButton_Spirit);
             this.groupBox_template.Controls.Add(this.radioButton_Mortal);
             this.groupBox_template.Controls.Add(this.radioButton_Dragonblooded);
             this.groupBox_template.Controls.Add(this.radioButton_Lunar);
             this.groupBox_template.Controls.Add(this.radioButton_SolarAbyssal);
             this.groupBox_template.Location = new System.Drawing.Point(12, 35);
             this.groupBox_template.Name = "groupBox_template";
-            this.groupBox_template.Size = new System.Drawing.Size(411, 49);
+            this.groupBox_template.Size = new System.Drawing.Size(463, 49);
             this.groupBox_template.TabIndex = 17;
             this.groupBox_template.TabStop = false;
             this.groupBox_template.Text = "Template";
@@ -416,11 +418,22 @@
             this.numericUpDown_Might.TabIndex = 19;
             this.numericUpDown_Might.Visible = false;
             // 
+            // radioButton_Spirit
+            // 
+            this.radioButton_Spirit.AutoSize = true;
+            this.radioButton_Spirit.Location = new System.Drawing.Point(330, 21);
+            this.radioButton_Spirit.Name = "radioButton_Spirit";
+            this.radioButton_Spirit.Size = new System.Drawing.Size(48, 17);
+            this.radioButton_Spirit.TabIndex = 4;
+            this.radioButton_Spirit.TabStop = true;
+            this.radioButton_Spirit.Text = "Spirit";
+            this.radioButton_Spirit.UseVisualStyleBackColor = true;
+            // 
             // AddCharacterExtensive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 305);
+            this.ClientSize = new System.Drawing.Size(487, 305);
             this.Controls.Add(this.numericUpDown_Might);
             this.Controls.Add(this.label_Might);
             this.Controls.Add(this.groupBox_template);
@@ -489,5 +502,6 @@
         private System.Windows.Forms.GroupBox groupBox_template;
         private System.Windows.Forms.Label label_Might;
         private System.Windows.Forms.NumericUpDown numericUpDown_Might;
+        private System.Windows.Forms.RadioButton radioButton_Spirit;
     }
 }

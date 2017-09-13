@@ -51,6 +51,8 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models.Factories
                     return 15 + essence;
                 case "Solar":
                     return 10 + essence * 3;
+                case "Spirit":
+                    return 50 + 10 * essence;
                 default:
                     return 0;
             }

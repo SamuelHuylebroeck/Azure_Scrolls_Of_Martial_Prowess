@@ -76,6 +76,10 @@ namespace Azure_Scrolls_of_Martial_Prowess.Views
             {
                 return "Solar";
             }
+            if (radioButton_Spirit.Checked)
+            {
+                return "Spirit";
+            }
             return res;
         }
 
