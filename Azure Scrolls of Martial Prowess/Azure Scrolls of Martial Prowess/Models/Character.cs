@@ -14,7 +14,9 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
             this.Name = name;
             this.CurrentInitiative = 0;
             this.CurrentPeripheralEssence = this.PeripheralEssence;
+            this.ReservedPersonalEssence = 0;
             this.CurrentPersonalEssence = this.PersonalEssence;
+            this.ReservedPeripheralEssence = 0;
             this.CurrentWillPower = this.Willpower;
             this.CurrentOnslaught = 0;
             
@@ -32,7 +34,9 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
         public int CurrentInitiative { get; set; }
         public int CurrentWillPower { get; set; }
         public int CurrentPersonalEssence { get; set; }
+        public int ReservedPersonalEssence { get; set; }
         public int CurrentPeripheralEssence { get; set; }
+        public int ReservedPeripheralEssence { get; set; }
         public int CurrentOnslaught { get; set; }
         public String CurrentAnimaLevel { get; set; }
         public List<KeyValuePair<string, Constants.HealthState>> CurrentHealthLevels { get; set; }
@@ -55,7 +59,15 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
         }
         public Boolean KeepOnslaughtOnAct { get; set; }
 
+        public int GetCurrentMaxPersonalEssence()
+        {
+            return this.PersonalEssence - ReservedPersonalEssence;
+        }
 
+        public int GetCurrentMaxPeripheralEssence()
+        {
+            return this.PeripheralEssence - ReservedPeripheralEssence;
+        }
         public Effect GetEffectByName(String name)
         {
             Effect res = null;
@@ -76,7 +88,8 @@ namespace Azure_Scrolls_of_Martial_Prowess.Models
             //onslaught
             res += "O:-" + CurrentOnslaught + ", ";
             //essence
-            res += "Ps:" + CurrentPersonalEssence + "/" + PersonalEssence + ", Pe:" + CurrentPeripheralEssence + "/" + PeripheralEssence + ", ";
+            res += "Ps:" + CurrentPersonalEssence +"("+ReservedPersonalEssence+")"+"/" + PersonalEssence 
+                + ", Pe:" + CurrentPeripheralEssence +"("+ReservedPeripheralEssence+")"+ "/" + PeripheralEssence + ", ";
             //Health
             res += "WP:" + CurrentWillPower+", ";
             res += "W:-" + GetGreatestWoundPenalty();

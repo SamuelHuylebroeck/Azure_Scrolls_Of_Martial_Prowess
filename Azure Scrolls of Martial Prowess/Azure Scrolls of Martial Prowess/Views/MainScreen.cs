@@ -42,6 +42,11 @@ namespace Azure_Scrolls_of_Martial_Prowess
             updateHandlerMapping.Add(comboBox_Focus_Anima.Name, Constants.Characteristic.A);
             numericUpDown_Focus_Onslaught.ValueChanged += new EventHandler(handle_focus_character_update_numericUpDown);
             updateHandlerMapping.Add(numericUpDown_Focus_Onslaught.Name, Constants.Characteristic.O);
+            numericUpDown_PersonalReserved.ValueChanged += new EventHandler(handle_focus_character_update_numericUpDown);
+            updateHandlerMapping.Add(numericUpDown_PersonalReserved.Name, Constants.Characteristic.RPSE);
+            numericUpDown_PeripheralReserved.ValueChanged += new EventHandler(handle_focus_character_update_numericUpDown);
+            updateHandlerMapping.Add(numericUpDown_PeripheralReserved.Name, Constants.Characteristic.RPRE);
+
 
             RedrawingFocus = false;
             RedrawingCombatTable = false;
@@ -86,7 +91,9 @@ namespace Azure_Scrolls_of_Martial_Prowess
                 Type.Text = currentFocus.Type;
                 numericUpDown_Focus_Initiative.Value = currentFocus.CurrentInitiative;
                 numericUpDown_Focus_PersonalEssence.Value = currentFocus.CurrentPersonalEssence;
+                numericUpDown_PersonalReserved.Value = currentFocus.ReservedPersonalEssence;
                 numericUpDown_Focus_PeripheralEssence.Value = currentFocus.CurrentPeripheralEssence;
+                numericUpDown_PeripheralReserved.Value = currentFocus.ReservedPeripheralEssence;
                 numericUpDown_Focus_Willpower.Value = currentFocus.CurrentWillPower;
                 numericUpDown_Focus_Onslaught.Value = currentFocus.CurrentOnslaught;
                 comboBox_Focus_Anima.SelectedValue = currentFocus.CurrentAnimaLevel;

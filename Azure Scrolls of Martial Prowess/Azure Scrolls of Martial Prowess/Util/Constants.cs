@@ -21,7 +21,9 @@ namespace Azure_Scrolls_of_Martial_Prowess.Util
         {
             INIT, //initiative
             PSE, //Personal Essence
+            RPSE, //reserved personal essence
             PRE, //Peripheral Essence
+            RPRE, //reserved peripheral essence
             A, //Anima
             HL,//Health levels
             WP, //Willpower
@@ -35,7 +37,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Util
             LETHAL
         }
 
-        public static String[] ALLOWED_HL_STRINGS = { "O", "\\", "X" };
+        public static String[] ALLOWED_HL_STRINGS = { "O", "/", "X" };
 
         public static String HealthStateToString(HealthState state)
         {

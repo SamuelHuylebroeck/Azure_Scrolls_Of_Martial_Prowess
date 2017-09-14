@@ -34,6 +34,11 @@
             this.CombatScreen = new System.Windows.Forms.GroupBox();
             this.CombatTablePanel = new System.Windows.Forms.Panel();
             this.dataGridView_CombatTable = new System.Windows.Forms.DataGridView();
+            this.InitiativeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,11 +75,10 @@
             this.Button_NextRound = new System.Windows.Forms.Button();
             this.Button_AddCharacter = new System.Windows.Forms.Button();
             this.Button_Refresh = new System.Windows.Forms.Button();
-            this.InitiativeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParticipantDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HasActedColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label_PersonalReserved = new System.Windows.Forms.Label();
+            this.numericUpDown_PersonalReserved = new System.Windows.Forms.NumericUpDown();
+            this.label_PeripheralReserved = new System.Windows.Forms.Label();
+            this.numericUpDown_PeripheralReserved = new System.Windows.Forms.NumericUpDown();
             this.CombatScreen.SuspendLayout();
             this.CombatTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).BeginInit();
@@ -91,6 +95,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Willpower)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Initiative)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PersonalReserved)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PeripheralReserved)).BeginInit();
             this.SuspendLayout();
             // 
             // CombatScreen
@@ -163,6 +169,43 @@
             this.dataGridView_CombatTable.Size = new System.Drawing.Size(600, 573);
             this.dataGridView_CombatTable.TabIndex = 1;
             // 
+            // InitiativeColumn
+            // 
+            this.InitiativeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.InitiativeColumn.Frozen = true;
+            this.InitiativeColumn.HeaderText = "Initiative";
+            this.InitiativeColumn.Name = "InitiativeColumn";
+            this.InitiativeColumn.Width = 71;
+            // 
+            // ParticipantName
+            // 
+            this.ParticipantName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ParticipantName.Frozen = true;
+            this.ParticipantName.HeaderText = "Name";
+            this.ParticipantName.Name = "ParticipantName";
+            this.ParticipantName.Width = 60;
+            // 
+            // ParticipantDetails
+            // 
+            this.ParticipantDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ParticipantDetails.HeaderText = "Details";
+            this.ParticipantDetails.Name = "ParticipantDetails";
+            this.ParticipantDetails.ReadOnly = true;
+            // 
+            // HasActedColumn
+            // 
+            this.HasActedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.HasActedColumn.HeaderText = "Acted?";
+            this.HasActedColumn.Name = "HasActedColumn";
+            this.HasActedColumn.Width = 47;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.Width = 44;
+            // 
             // MainMenu
             // 
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -210,6 +253,10 @@
             // 
             // CharacterFocus
             // 
+            this.CharacterFocus.Controls.Add(this.numericUpDown_PeripheralReserved);
+            this.CharacterFocus.Controls.Add(this.label_PeripheralReserved);
+            this.CharacterFocus.Controls.Add(this.numericUpDown_PersonalReserved);
+            this.CharacterFocus.Controls.Add(this.label_PersonalReserved);
             this.CharacterFocus.Controls.Add(this.checkBox_Focus_KeepOnslaught);
             this.CharacterFocus.Controls.Add(this.label_Onslaught);
             this.CharacterFocus.Controls.Add(this.numericUpDown_Focus_Onslaught);
@@ -514,42 +561,39 @@
             this.Button_Refresh.UseVisualStyleBackColor = true;
             this.Button_Refresh.Click += new System.EventHandler(this.Button_Refresh_Click);
             // 
-            // InitiativeColumn
+            // label_PersonalReserved
             // 
-            this.InitiativeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.InitiativeColumn.Frozen = true;
-            this.InitiativeColumn.HeaderText = "Initiative";
-            this.InitiativeColumn.Name = "InitiativeColumn";
-            this.InitiativeColumn.Width = 71;
+            this.label_PersonalReserved.AutoSize = true;
+            this.label_PersonalReserved.Location = new System.Drawing.Point(181, 176);
+            this.label_PersonalReserved.Name = "label_PersonalReserved";
+            this.label_PersonalReserved.Size = new System.Drawing.Size(53, 13);
+            this.label_PersonalReserved.TabIndex = 22;
+            this.label_PersonalReserved.Text = "Reserved";
             // 
-            // ParticipantName
+            // numericUpDown_PersonalReserved
             // 
-            this.ParticipantName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ParticipantName.Frozen = true;
-            this.ParticipantName.HeaderText = "Name";
-            this.ParticipantName.Name = "ParticipantName";
-            this.ParticipantName.Width = 60;
+            this.numericUpDown_PersonalReserved.Location = new System.Drawing.Point(240, 174);
+            this.numericUpDown_PersonalReserved.Name = "numericUpDown_PersonalReserved";
+            this.numericUpDown_PersonalReserved.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDown_PersonalReserved.TabIndex = 23;
+            this.numericUpDown_PersonalReserved.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // ParticipantDetails
+            // label_PeripheralReserved
             // 
-            this.ParticipantDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ParticipantDetails.HeaderText = "Details";
-            this.ParticipantDetails.Name = "ParticipantDetails";
-            this.ParticipantDetails.ReadOnly = true;
+            this.label_PeripheralReserved.AutoSize = true;
+            this.label_PeripheralReserved.Location = new System.Drawing.Point(181, 202);
+            this.label_PeripheralReserved.Name = "label_PeripheralReserved";
+            this.label_PeripheralReserved.Size = new System.Drawing.Size(53, 13);
+            this.label_PeripheralReserved.TabIndex = 24;
+            this.label_PeripheralReserved.Text = "Reserved";
             // 
-            // HasActedColumn
+            // numericUpDown_PeripheralReserved
             // 
-            this.HasActedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.HasActedColumn.HeaderText = "Acted?";
-            this.HasActedColumn.Name = "HasActedColumn";
-            this.HasActedColumn.Width = 47;
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.Width = 44;
+            this.numericUpDown_PeripheralReserved.Location = new System.Drawing.Point(240, 200);
+            this.numericUpDown_PeripheralReserved.Name = "numericUpDown_PeripheralReserved";
+            this.numericUpDown_PeripheralReserved.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDown_PeripheralReserved.TabIndex = 25;
+            this.numericUpDown_PeripheralReserved.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // MainScreen
             // 
@@ -584,6 +628,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Willpower)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Initiative)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PersonalReserved)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PeripheralReserved)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -635,5 +681,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
         private System.Windows.Forms.DataGridViewTextBoxColumn InitiativeColumn;
+        private System.Windows.Forms.NumericUpDown numericUpDown_PeripheralReserved;
+        private System.Windows.Forms.Label label_PeripheralReserved;
+        private System.Windows.Forms.NumericUpDown numericUpDown_PersonalReserved;
+        private System.Windows.Forms.Label label_PersonalReserved;
     }
 }

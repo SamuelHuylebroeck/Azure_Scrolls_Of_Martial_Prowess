@@ -115,7 +115,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             if (result && mainScreen != null && !mainScreen.RedrawingCombatTable)
             {
                 mainScreen.RedrawCombatTable();
-                if (currentFocus.Name.Equals(name))
+                if (currentFocus != null && currentFocus.Name.Equals(name))
                 {
                     currentFocus = null;
                     if (!mainScreen.RedrawingFocus)
@@ -190,8 +190,8 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
             {
                 int motesLeft = 5;
                 //Try to add motes to Peripheral first
-                int missingInPeripheral = Math.Max(charPres.PeripheralEssence - charPres.CurrentPeripheralEssence, 0);
-                int missingInPersonal = Math.Max(charPres.PersonalEssence - charPres.CurrentPersonalEssence, 0);
+                int missingInPeripheral = Math.Max(charPres.GetCurrentMaxPeripheralEssence() - charPres.CurrentPeripheralEssence, 0);
+                int missingInPersonal = Math.Max(charPres.GetCurrentMaxPersonalEssence() - charPres.CurrentPersonalEssence, 0);
                 //Try & Fill peripheral first
                 if (missingInPeripheral >= motesLeft)
                 {
@@ -308,6 +308,7 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
 
         public void UpdateFocusCharacter(Constants.Characteristic code, object newValue)
         {
+            int delta;
             switch (code)
             {
                 case Constants.Characteristic.INIT:
@@ -334,6 +335,20 @@ namespace Azure_Scrolls_of_Martial_Prowess.Controllers
                 case Constants.Characteristic.O:
                     int newOnslaught = (int)newValue;
                     currentFocus.CurrentOnslaught = newOnslaught;
+                    break;
+                case Constants.Characteristic.RPRE:
+                    int newReservedPeripheralEssence = (int)newValue;
+                    delta = newReservedPeripheralEssence - currentFocus.ReservedPeripheralEssence;
+                    if (delta > currentFocus.CurrentPeripheralEssence) break;
+                    currentFocus.ReservedPeripheralEssence = newReservedPeripheralEssence;
+                    currentFocus.CurrentPeripheralEssence -= delta;
+                    break;
+                case Constants.Characteristic.RPSE:
+                    int newReservedPersonalEssence = (int)newValue;
+                    delta = newReservedPersonalEssence - currentFocus.ReservedPersonalEssence;
+                    if (delta > currentFocus.CurrentPersonalEssence) break;
+                    currentFocus.ReservedPersonalEssence = newReservedPersonalEssence;
+                    currentFocus.CurrentPersonalEssence -= delta;
                     break;
                 default:
                     break;
