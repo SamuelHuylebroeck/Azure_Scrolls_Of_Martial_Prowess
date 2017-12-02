@@ -46,6 +46,10 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CharacterFocus = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_PeripheralReserved = new System.Windows.Forms.NumericUpDown();
+            this.label_PeripheralReserved = new System.Windows.Forms.Label();
+            this.numericUpDown_PersonalReserved = new System.Windows.Forms.NumericUpDown();
+            this.label_PersonalReserved = new System.Windows.Forms.Label();
             this.checkBox_Focus_KeepOnslaught = new System.Windows.Forms.CheckBox();
             this.label_Onslaught = new System.Windows.Forms.Label();
             this.numericUpDown_Focus_Onslaught = new System.Windows.Forms.NumericUpDown();
@@ -75,15 +79,13 @@
             this.Button_NextRound = new System.Windows.Forms.Button();
             this.Button_AddCharacter = new System.Windows.Forms.Button();
             this.Button_Refresh = new System.Windows.Forms.Button();
-            this.label_PersonalReserved = new System.Windows.Forms.Label();
-            this.numericUpDown_PersonalReserved = new System.Windows.Forms.NumericUpDown();
-            this.label_PeripheralReserved = new System.Windows.Forms.Label();
-            this.numericUpDown_PeripheralReserved = new System.Windows.Forms.NumericUpDown();
             this.CombatScreen.SuspendLayout();
             this.CombatTablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CombatTable)).BeginInit();
             this.MainMenu.SuspendLayout();
             this.CharacterFocus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PeripheralReserved)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PersonalReserved)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Onslaught)).BeginInit();
             this.HealthLevels.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Focus_HealthLevels)).BeginInit();
@@ -95,8 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Willpower)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Initiative)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PersonalReserved)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PeripheralReserved)).BeginInit();
             this.SuspendLayout();
             // 
             // CombatScreen
@@ -282,6 +282,40 @@
             this.CharacterFocus.TabIndex = 2;
             this.CharacterFocus.TabStop = false;
             this.CharacterFocus.Text = "Focus";
+            // 
+            // numericUpDown_PeripheralReserved
+            // 
+            this.numericUpDown_PeripheralReserved.Location = new System.Drawing.Point(240, 200);
+            this.numericUpDown_PeripheralReserved.Name = "numericUpDown_PeripheralReserved";
+            this.numericUpDown_PeripheralReserved.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDown_PeripheralReserved.TabIndex = 25;
+            this.numericUpDown_PeripheralReserved.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label_PeripheralReserved
+            // 
+            this.label_PeripheralReserved.AutoSize = true;
+            this.label_PeripheralReserved.Location = new System.Drawing.Point(181, 202);
+            this.label_PeripheralReserved.Name = "label_PeripheralReserved";
+            this.label_PeripheralReserved.Size = new System.Drawing.Size(53, 13);
+            this.label_PeripheralReserved.TabIndex = 24;
+            this.label_PeripheralReserved.Text = "Reserved";
+            // 
+            // numericUpDown_PersonalReserved
+            // 
+            this.numericUpDown_PersonalReserved.Location = new System.Drawing.Point(240, 174);
+            this.numericUpDown_PersonalReserved.Name = "numericUpDown_PersonalReserved";
+            this.numericUpDown_PersonalReserved.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDown_PersonalReserved.TabIndex = 23;
+            this.numericUpDown_PersonalReserved.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label_PersonalReserved
+            // 
+            this.label_PersonalReserved.AutoSize = true;
+            this.label_PersonalReserved.Location = new System.Drawing.Point(181, 176);
+            this.label_PersonalReserved.Name = "label_PersonalReserved";
+            this.label_PersonalReserved.Size = new System.Drawing.Size(53, 13);
+            this.label_PersonalReserved.TabIndex = 22;
+            this.label_PersonalReserved.Text = "Reserved";
             // 
             // checkBox_Focus_KeepOnslaught
             // 
@@ -503,6 +537,11 @@
             // numericUpDown_Focus_Initiative
             // 
             this.numericUpDown_Focus_Initiative.Location = new System.Drawing.Point(105, 71);
+            this.numericUpDown_Focus_Initiative.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown_Focus_Initiative.Name = "numericUpDown_Focus_Initiative";
             this.numericUpDown_Focus_Initiative.Size = new System.Drawing.Size(76, 20);
             this.numericUpDown_Focus_Initiative.TabIndex = 4;
@@ -561,40 +600,6 @@
             this.Button_Refresh.UseVisualStyleBackColor = true;
             this.Button_Refresh.Click += new System.EventHandler(this.Button_Refresh_Click);
             // 
-            // label_PersonalReserved
-            // 
-            this.label_PersonalReserved.AutoSize = true;
-            this.label_PersonalReserved.Location = new System.Drawing.Point(181, 176);
-            this.label_PersonalReserved.Name = "label_PersonalReserved";
-            this.label_PersonalReserved.Size = new System.Drawing.Size(53, 13);
-            this.label_PersonalReserved.TabIndex = 22;
-            this.label_PersonalReserved.Text = "Reserved";
-            // 
-            // numericUpDown_PersonalReserved
-            // 
-            this.numericUpDown_PersonalReserved.Location = new System.Drawing.Point(240, 174);
-            this.numericUpDown_PersonalReserved.Name = "numericUpDown_PersonalReserved";
-            this.numericUpDown_PersonalReserved.Size = new System.Drawing.Size(70, 20);
-            this.numericUpDown_PersonalReserved.TabIndex = 23;
-            this.numericUpDown_PersonalReserved.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label_PeripheralReserved
-            // 
-            this.label_PeripheralReserved.AutoSize = true;
-            this.label_PeripheralReserved.Location = new System.Drawing.Point(181, 202);
-            this.label_PeripheralReserved.Name = "label_PeripheralReserved";
-            this.label_PeripheralReserved.Size = new System.Drawing.Size(53, 13);
-            this.label_PeripheralReserved.TabIndex = 24;
-            this.label_PeripheralReserved.Text = "Reserved";
-            // 
-            // numericUpDown_PeripheralReserved
-            // 
-            this.numericUpDown_PeripheralReserved.Location = new System.Drawing.Point(240, 200);
-            this.numericUpDown_PeripheralReserved.Name = "numericUpDown_PeripheralReserved";
-            this.numericUpDown_PeripheralReserved.Size = new System.Drawing.Size(70, 20);
-            this.numericUpDown_PeripheralReserved.TabIndex = 25;
-            this.numericUpDown_PeripheralReserved.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -616,6 +621,8 @@
             this.MainMenu.PerformLayout();
             this.CharacterFocus.ResumeLayout(false);
             this.CharacterFocus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PeripheralReserved)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PersonalReserved)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Onslaught)).EndInit();
             this.HealthLevels.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Focus_HealthLevels)).EndInit();
@@ -628,8 +635,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Willpower)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Focus_Initiative)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Portrait)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PersonalReserved)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PeripheralReserved)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

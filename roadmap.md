@@ -6,3 +6,4 @@
 
 # Small improvements:
 - Allow ripling bashing and lethal damage assignment: numerical counter that will add and push back damage on the health track, instead of having to manually update each part of the track
+- Allowed motes to be reserved
